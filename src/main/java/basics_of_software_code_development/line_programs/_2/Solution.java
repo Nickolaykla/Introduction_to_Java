@@ -17,6 +17,6 @@ public class Solution {
     }
 
     public static double function(double a, double b, double c) {
-        return (b + Math.sqrt(b * b + 4 * a * c)) / 2 * a - (Math.pow(a, 3) * c) + Math.pow(b, -2);
+        return (b + Math.sqrt(b * b + 4.0 * a * c)) / 2 * a - (Math.pow(a, 3) * c) + Math.pow(b, -2);
     }
 }
