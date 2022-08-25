@@ -19,7 +19,10 @@ public class Solution {
             System.out.println(willPass(A, B, x, y, z));
         }
     }
+
     public static boolean willPass(double A, double B, double x, double y, double z) {
-        return (x <= A && y <= B) || (x <= B && y <= A);
+        return  (x <= A && y <= B) || (x <= B && y <= A) ||
+                (x <= A && z <= B) || (y <= B && z <= A) ||
+                (x <= B && z <= A) || (y <= A && z <= B);
     }
 }
