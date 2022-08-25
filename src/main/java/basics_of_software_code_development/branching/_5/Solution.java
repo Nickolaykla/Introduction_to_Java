@@ -8,16 +8,15 @@ import java.io.InputStreamReader;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            int i = Integer.parseInt(reader.readLine());
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            double i = Double.parseDouble(reader.readLine());
 
             System.out.println(function(i));
         }
     }
-    public static double function(int i) {
-        if (i <= 3) {
-            return i * i - 3 * i + 9;
-        } else return 1 / (Math.pow(i, 3) + 6);
+
+    public static double function(double i) {
+        return i <= 3 ? (i * i - 3 * i + 9) : 1 / (Math.pow(i, 3) + 6);
     }
 }
 
