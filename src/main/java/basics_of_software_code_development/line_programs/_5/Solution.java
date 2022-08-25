@@ -4,10 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/*Дано натуральное число Т, которое представляет длительность прошедшего времени в секундах.
+/*
+Дано натуральное число Т, которое представляет длительность прошедшего времени в секундах.
 Вывести данное значение длительности в часах, минутах и секундах в следующем формате:
 ННч ММмин SSс.
-* */
+*/
 public class Solution {
     public static void main(String[] args) throws IOException {
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
