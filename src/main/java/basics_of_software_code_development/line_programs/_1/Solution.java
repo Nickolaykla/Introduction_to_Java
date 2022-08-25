@@ -12,7 +12,7 @@ public class Solution {
             double c = Double.parseDouble(reader.readLine());
 
             double z = function(a, b, c);
-            System.out.println(z);
+            System.out.printf("%.2f", z);
         }
     }
     public static double function(double a, double b, double c) {
