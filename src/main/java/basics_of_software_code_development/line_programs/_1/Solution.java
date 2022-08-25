@@ -4,9 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/*Найдите значение функции: z = ((a-3) * b / 2) + c * */
 public class Solution {
     public static void main(String[] args) throws IOException {
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             double a = Double.parseDouble(reader.readLine());
             double b = Double.parseDouble(reader.readLine());
             double c = Double.parseDouble(reader.readLine());
@@ -15,7 +16,8 @@ public class Solution {
             System.out.printf("%.2f", z);
         }
     }
+
     public static double function(double a, double b, double c) {
-        return  ((a-3) * b / 2) + c;
+        return ((a - 3) * b / 2) + c;
     }
 }
