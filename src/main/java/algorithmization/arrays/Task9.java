@@ -22,10 +22,10 @@ public class Task9 {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = Integer.parseInt(reader.readLine());
             }
-            System.out.println(getNumberWithBigFrequency(arr));
+            System.out.println(getMinNumberWithBigFrequency(arr));
         }
     }
-    public static int getNumberWithBigFrequency(int[] arr) {
+    public static int getMinNumberWithBigFrequency(int[] arr) {
         Arrays.sort(arr);
         int minNum = 0;
         int maxCounts = 0;
