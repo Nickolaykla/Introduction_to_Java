@@ -18,6 +18,11 @@ public class Solution {
     }
 
     public static double function(double a, double b, double c) {
-        return (b + Math.sqrt(b * b + 4.0 * a * c)) / 2 * a - (Math.pow(a, 3) * c) + Math.pow(b, -2);
+        double discrim = Math.sqrt(b * b + 4.0 * a * c);
+
+        if (discrim >= 0 && a != 0 && b != 0)
+        return (b + discrim) / 2 * a - Math.pow(a, 3) * c + Math.pow(b, -2);
+
+        else throw new IllegalArgumentException();
     }
 }
