@@ -8,39 +8,41 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Task3 {
+    private static final Scanner IN = new Scanner(System.in);
     public static void main(String[] args) {
         int[][] array = initialArray(); // инициализируем массив
         printInitialArray(array); // выводим начальный массив
 
+        System.out.println("Введите номер строки и колонки: ");
+        int line = IN.nextInt();
+        int column = IN.nextInt();
         // выводим результат
-        printLineAndColumn(array, 2, 4);
+        printLineAndColumn(array, line, column);
     }
 
     public static int[][] initialArray() {
-        try (Scanner in = new Scanner(System.in)) {
             System.out.println("Введите количество строк:");
-            int n = in.nextInt();
+            int n = IN.nextInt();
             System.out.println("Введите количество столбцов: ");
-            int k = in.nextInt();
+            int k = IN.nextInt();
             if (n <= 0 || k <= 0) {
                 throw new IllegalArgumentException();
             }
             int[][] arr = new int[n][k];
 
-            for (int i = 0; i < arr.length; i++) {
-                for (int j = 0; j < arr.length; j++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < k; j++) {
                     arr[i][j] = (int) (Math.random() * 131);
                 }
             }
             return arr;
         }
-    }
 
     public static void printInitialArray(int[][] arr) {
         System.out.println("Исходный массив: ");
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                System.out.print(arr[i][j] + " ");
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + "\t");
             }
             System.out.println();
         }

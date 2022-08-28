@@ -6,56 +6,51 @@ import java.util.Scanner;
 
 public class Task2 {
     public static void main(String[] args) {
-        getStart();
+        int[][] arr = initialArray();
+        printInitialArray(arr);
+        printDiagonalElements(arr);
     }
 
     public static void printDiagonalElements(int[][] arr) {
+        System.out.println("Элементы по диагонали: ");
         for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i][i] + " ");
+            System.out.print(arr[i][i] + ", ");
         }
         System.out.println();
 
         for (int i = arr.length - 1; i >= 0; i--) {
-            System.out.print(arr[i][arr.length - 1 - i] + " ");
+            System.out.print(arr[i][arr.length - 1 - i] + ", ");
         }
     }
 
-    // Ввод стартовых данных
-    public static void getStart() {
+    public static int[][] initialArray() {
         try (Scanner in = new Scanner(System.in)) {
-            System.out.println("Введите число столбцов: ");
+            System.out.println("Введите размерность матрицы: ");
             int n = in.nextInt();
-            if (n < 1) return;
+            if (n <= 0) {
+                System.out.println("Некорректный размер");
+                throw new IllegalArgumentException();
+            }
+            int[][] arr = new int[n][n];
 
-            System.out.println("Введите число строк");
-            int k = in.nextInt();
-            if (k < 1) return;
-
-            int[][] arr = new int[k][n];
-            System.out.println("Заполните массив данными: ");
-            for (int i = 0; i < k; i++) {
-                for (int j = 0; j < n; j++) {
-                    arr[i][j] = in.nextInt();
+            for (int i = 0; i < arr.length; i++) {
+                for (int j = 0; j < arr[i].length; j++) {
+                    arr[i][j] = (int) (Math.random() * 100 - 50);
                 }
             }
-            System.out.println("Исходный массив");
-            printInitialArray(arr);
-
-            System.out.println("Результат:");
-            printDiagonalElements(arr);
-
+            return arr;
         }
     }
 
     // Вывод исходного массива
     public static void printInitialArray(int[][] arr) {
+        System.out.println("Исходный массив: ");
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
-                System.out.print(arr[i][j] + " ");
+                System.out.print("\t" + arr[i][j] + "\t");
             }
             System.out.println();
         }
         System.out.println();
     }
-
 }

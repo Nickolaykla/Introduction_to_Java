@@ -9,41 +9,40 @@ import java.util.Scanner;
 
 public class Task1 {
     public static void main(String[] args) {
-        getStart();
+        int[][] arr = initialArray();
+        printInitialArray(arr);
+        printOddColumns(arr);
     }
 
     // Выводит исходный массив
     public static void printInitialArray(int[][] arr) {
+        System.out.println("Исходный массив: ");
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
-                System.out.print(arr[i][j] + " ");
+                System.out.print(arr[i][j] + "\t\t");
             }
             System.out.println();
         }
         System.out.println();
     }
-    // Ввод стартовых данных, вызов вывода исходного массива, вызов вывода колонок согласно условию.
-    public static void getStart() {
-        try (Scanner in = new Scanner(System.in)) {
-            System.out.println("Введите число столбцов: ");
+    // инициализация массива случайными данными
+    public static int[][] initialArray() {
+        try(Scanner in = new Scanner(System.in)) {
+            System.out.println("Введите количество строк:");
             int n = in.nextInt();
-            if (n < 1) return;
-            System.out.println("Введите число строк");
+            System.out.println("Введите количество столбцов: ");
             int k = in.nextInt();
-            if (k < 1) return;
+            if (n <= 0 || k <= 0) {
+                throw new IllegalArgumentException();
+            }
+            int[][] arr = new int[n][k];
 
-            int[][] arr = new int[k][n];
-            System.out.println("Заполните массив данными: ");
-            for (int i = 0; i < k; i++) {
-                for (int j = 0; j < n; j++) {
-                    arr[i][j] = in.nextInt();
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < k; j++) {
+                    arr[i][j] = (int) (Math.random() * 100 - 50);
                 }
             }
-            System.out.println("Исходный массив");
-            printInitialArray(arr);
-
-            System.out.println("Нечетные столбцы, где 1 элемент > последнего: ");
-            printOddColumns(arr);
+            return arr;
         }
     }
 
@@ -56,11 +55,11 @@ public class Task1 {
                 checkColumn[i] = true;
             }
         }
-
+        System.out.println("Результат: ");
         for (int[] ar : arr) {
             for (int j = 0; j < ar.length; j++) {
                 if (checkColumn[j]) {
-                    System.out.print(ar[j] + " ");
+                    System.out.print(ar[j] + "\t\t");
                 }
             }
             System.out.println();
