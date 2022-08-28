@@ -44,7 +44,6 @@ public class Task8 {
             }
         }
         return arr;
-
     }
 
     public static void exchangeColumns(int[][] arr, int first, int second) {
