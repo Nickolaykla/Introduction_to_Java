@@ -15,6 +15,7 @@ public class Task5 {
     public static void main(String[] args) {
         printInitialArray(initArray());
     }
+    // выводим созданный массив
     public static void printInitialArray(int[][] arr) {
         System.out.println("Итоговый массив: ");
         for (int i = 0; i < arr.length; i++) {
@@ -24,6 +25,7 @@ public class Task5 {
             System.out.println();
         }
     }
+    // Создаем и заполняем массив значениями
     public static int[][] initArray() {
         try(Scanner in = new Scanner(System.in)) {
             System.out.println("Введите количество строк, столбцов: ");
