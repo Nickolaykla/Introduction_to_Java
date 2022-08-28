@@ -1,6 +1,5 @@
 package algorithmization.multidimensional_arrays;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -13,6 +12,7 @@ public class Task1 {
         getStart();
     }
 
+    // Выводит исходный массив
     public static void printInitialArray(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
@@ -22,7 +22,7 @@ public class Task1 {
         }
         System.out.println();
     }
-
+    // Ввод стартовых данных, вызов вывода исходного массива, вызов вывода колонок согласно условию.
     public static void getStart() {
         try (Scanner in = new Scanner(System.in)) {
             System.out.println("Введите число столбцов: ");
@@ -47,6 +47,7 @@ public class Task1 {
         }
     }
 
+    // Вывод нечетных колонок, где 1 элемент больше последнего
     public static void printOddColumns(int[][] arr) {
         boolean[] checkColumn = new boolean[arr[0].length];
 
