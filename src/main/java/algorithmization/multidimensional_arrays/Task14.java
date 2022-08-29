@@ -31,10 +31,34 @@ public class Task14 {
                 System.out.println("Введены некорректные данные");
                 throw new IllegalArgumentException();
             }
-
             int[][] arr = new int[n][k];
 
+            if (k <= n) {
+                for (int i = 0; i < k; i++) {
+                    int numberOf1 = i + 1;
 
+                    while (numberOf1 != 0) {
+                        int index = (int) (Math.random() * n);
+
+                        if (arr[index][i] == 0) {
+                            arr[index][i] = 1;
+                            numberOf1--;
+                        }
+                    }
+                }
+            } else {
+                for (int i = 0; i < n; i++) {
+                    int numberOf1 = i + 1;
+
+                    while (numberOf1 != 0) {
+                        int index = (int) (Math.random() * n);
+                        if (arr[index][i] == 0) {
+                            arr[index][i] = 1;
+                            numberOf1--;
+                        }
+                    }
+                }
+            }
             System.out.println("Результат: ");
             printArray(arr);
         }
