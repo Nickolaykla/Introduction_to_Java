@@ -38,19 +38,15 @@ public class Task1 {
     }
 
     public static int[] mergeArrays(int[] arr1, int[] arr2, int k) {
-        int[] result = new int[arr1.length+arr2.length];
-        int index = k;
-        for (int i = 0; i < k; i++) {
-            result[i] = arr1[i];
-        }
-        for (int i = 0; i < arr2.length; i++) {
-            result[k] = arr2[i];
-            k++;
-        }
+        int len1 = arr1.length;
+        int len2 = arr2.length;
+        int[] result = new int[len1 + len2];
 
-        for (int i = k; i < result.length; i++, index++) {
-            result[i] = arr1[index];
-        }
+        System.arraycopy(arr1, 0, result, 0, k);
+
+        System.arraycopy(arr2, 0, result, k, len2);
+
+        System.arraycopy(arr1, k, result, k + len2, len1 - k);
         return result;
     }
 }
