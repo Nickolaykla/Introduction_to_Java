@@ -17,11 +17,12 @@ public class Task6 {
             System.out.println(check3Numbers(num1, num2, num3));
         }
     }
-
+    // Если НОД 3 чисел = 1, то числа взаимно простые
     public static boolean check3Numbers(int num1, int num2, int num3) {
         return gcd(gcd(num1, num2), num3) == 1;
     }
 
+    // НОД
     public static long gcd(long num1, long num2) {
         return num2 == 0 ? num1 : gcd(num2, num1 % num2);
     }
