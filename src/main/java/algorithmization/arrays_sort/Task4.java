@@ -20,6 +20,7 @@ public class Task4 {
         try (Scanner in = new Scanner(System.in)) {
             System.out.println("Введите длину массива: ");
             int len = in.nextInt();
+            if (len <= 0) throw new IllegalArgumentException();
 
             int[] arr = new int[len];
             for (int i = 0; i < arr.length; i++) {

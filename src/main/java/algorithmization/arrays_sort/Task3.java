@@ -18,12 +18,13 @@ public class Task3 {
         selectionSort(arr);
         System.out.println(Arrays.toString(arr));
     }
+
     public static void selectionSort(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int maxEl = arr[i];
             int maxInd = i;
             for (int j = i + 1; j < arr.length; j++) {
-                if(maxEl < arr[j]) {
+                if (maxEl < arr[j]) {
                     maxEl = arr[j];
                     maxInd = j;
                 }
@@ -34,16 +35,18 @@ public class Task3 {
 
         }
     }
-    public static int[] initArray() {
-        try(Scanner in = new Scanner(System.in)) {
-        System.out.println("Введите длину массива: ");
-        int len = in.nextInt();
 
-        int[] arr = new int[len];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int) (Math.random() * 100 - 50);
+    public static int[] initArray() {
+        try (Scanner in = new Scanner(System.in)) {
+            System.out.println("Введите длину массива: ");
+            int len = in.nextInt();
+            if (len <= 0) throw new IllegalArgumentException();
+
+            int[] arr = new int[len];
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = (int) (Math.random() * 100 - 50);
+            }
+            return arr;
         }
-        return arr;
     }
-}
 }
