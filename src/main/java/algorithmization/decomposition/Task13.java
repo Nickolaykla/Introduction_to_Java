@@ -13,13 +13,11 @@ public class Task13 {
             int n = in.nextInt();
             if (n <= 2) throw new IllegalArgumentException();
 
-            if (n % 2 != 0) printOddTwins(n);
-            else printEvenTwins(n);
+            printTwins(n);
         }
     }
 
-    // печатает четные пары
-    public static void printEvenTwins(int n) {
+    public static void printTwins(int n) {
         int count = 0;
         for (int i = n; i <= 2 * n; i += 2) {
             count++;
@@ -28,21 +26,11 @@ public class Task13 {
                 System.out.println();
                 i -= 2;
             }
-            if (count > n - 1) break;
-        }
-    }
-
-    // нечетные
-    public static void printOddTwins(int n) {
-        int count = 0;
-        for (int i = n; i <= 2 * n; i += 2) {
-            count++;
-            System.out.print(i + " ");
-            if (count % 2 == 0) {
-                System.out.println();
-                i -= 2;
+            if (n % 2 == 0) {
+                if (count > n - 1) break;
+            } else {
+                if (count > n - 2) break;
             }
-            if (count > n - 2) break;
         }
     }
 }
