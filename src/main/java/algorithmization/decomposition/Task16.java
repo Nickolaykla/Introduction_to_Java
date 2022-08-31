@@ -8,11 +8,12 @@ import java.util.Scanner;
 * */
 public class Task16 {
     public static void main(String[] args) {
-        try(Scanner in = new Scanner(System.in)) {
+        try (Scanner in = new Scanner(System.in)) {
             System.out.println("Введите количество цифр:");
             int n = in.nextInt();
-            long sum = findSum(n);
+            if (n < 1 || n > 9) throw new IllegalArgumentException();
 
+            long sum = findSum(n);
             System.out.println("Сумма равна:");
             System.out.println(sum);
 
@@ -20,28 +21,31 @@ public class Task16 {
             countEvenDigitsInSum(sum);
         }
     }
+
     //проверяет цифры на нечетность
     public static boolean isOddDigitsInNumber(int num) {
         int digit;
         while (num != 0) {
             digit = num % 10;
             num /= 10;
-            if(digit % 2 == 0) return false;
+            if (digit % 2 == 0) return false;
         }
         return true;
     }
+
     // находим сумму в заданном диапазоне
     public static long findSum(int n) {
         long sum = 0;
-        int start = (int) Math.pow(10, n-1);
+        int start = (int) Math.pow(10, n - 1);
         int end = (int) Math.pow(10, n) - 1;
         for (int i = start; i <= end; i++) {
-            if(isOddDigitsInNumber(i)) {
+            if (isOddDigitsInNumber(i)) {
                 sum += i;
             }
         }
         return sum;
     }
+
     // Находит количество четных цифр в сумме
     public static void countEvenDigitsInSum(long sum) {
         int count = 0;
