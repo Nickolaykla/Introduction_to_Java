@@ -19,9 +19,8 @@ public class Task17 {
     }
     public static int countActions(int number) {
         int count = 0;
-        int sumOfDigits = getSumOfDigits(number);
         while ((number > 0)) {
-            number -= sumOfDigits;
+            number -= getSumOfDigits(number);
             count++;
         }
 
