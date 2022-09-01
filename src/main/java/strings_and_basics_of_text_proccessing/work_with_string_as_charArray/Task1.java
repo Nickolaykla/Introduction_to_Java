@@ -1,6 +1,4 @@
-package strings_and_basics_of_text_proccessing;
-
-import java.util.Arrays;
+package strings_and_basics_of_text_proccessing.work_with_string_as_charArray;
 
 /*
 Дан массив названий переменных в camelCase. Преобразовать названия в snake_case.

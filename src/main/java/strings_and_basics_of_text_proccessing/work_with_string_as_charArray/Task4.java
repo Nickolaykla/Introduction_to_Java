@@ -1,4 +1,4 @@
-package strings_and_basics_of_text_proccessing;
+package strings_and_basics_of_text_proccessing.work_with_string_as_charArray;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
