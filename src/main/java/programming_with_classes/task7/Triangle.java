@@ -25,26 +25,31 @@ public class Triangle {
         this.y3 = y3;
     }
 
+    public Triangle() {
+    }
+
     public static void main(String[] args) {
+        Triangle triangle = new Triangle();
+
         Triangle triangle1 = new Triangle(3, 4, 5, 2, 5, 6);
         System.out.println("Координаты 1 треугольника:");
         System.out.println(triangle1);
-        double sq = triangle1.getSquare(triangle1);
+        double sq = triangle.getSquare(triangle1);
         System.out.println("Площадь 1 треугольника равна = " + sq);
-        double perim = triangle1.getPerimeter(triangle1);
+        double perim = triangle.getPerimeter(triangle1);
         System.out.printf("Периметр 1 треугольника равен = %.2f \n", perim);
-        triangle1.getMedianPoint(triangle1);
+        triangle.getMedianPoint(triangle1);
 
         System.out.println("=================================================================");
 
         Triangle triangle2 = new Triangle(20, 32, 15, 24, 18, 36);
         System.out.println("Координаты 2 треугольника:");
         System.out.println(triangle2);
-        double sq2 = triangle1.getSquare(triangle2);
+        double sq2 = triangle.getSquare(triangle2);
         System.out.println("Площадь 2 треугольника равна = " + sq2);
-        double perim2 = triangle2.getPerimeter(triangle2);
+        double perim2 = triangle.getPerimeter(triangle2);
         System.out.printf("Периметр 2 треугольника равен = %.2f \n", perim2);
-        triangle1.getMedianPoint(triangle2);
+        triangle.getMedianPoint(triangle2);
 
     }
 
