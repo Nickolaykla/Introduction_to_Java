@@ -2,7 +2,7 @@ package programming_with_classes.task8;
 
 import java.util.*;
 
-public class CustomerArray {
+public class CustomerList {
 
     static List<Customer> customers = new ArrayList<>();
 
