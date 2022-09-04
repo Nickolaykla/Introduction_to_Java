@@ -43,6 +43,8 @@ public class Train {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("Введите номер поезда для получения информации:");
             int number = Integer.parseInt(reader.readLine());
+
+            // Получаем информацию о поезде по введенному номеру
             getInformationAboutTrain(trains, number);
         } catch (IOException e) {
             throw new RuntimeException(e);
