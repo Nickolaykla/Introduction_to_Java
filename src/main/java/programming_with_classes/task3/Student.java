@@ -12,6 +12,13 @@ public class Student {
     private int groupNum;
     private int[] GPA = new int[5];
 
+    public Student(String name, int groupNum) {
+        if (!name.isEmpty() && groupNum > 0) {
+            this.name = name;
+            this.groupNum = groupNum;
+        } else throw new IllegalArgumentException();
+    }
+
     public static void main(String[] args) {
         System.out.println("Студенты с оценками 9 или 10:");
         getStudentsWithMaxGPA(initStudentArrayAndSetGPA());
@@ -56,13 +63,6 @@ public class Student {
         return new Student[]{
                 student1, student2, student3, student4, student5,
                 student6, student7, student8, student9, student10};
-    }
-
-    public Student(String name, int groupNum) {
-        if (!name.isEmpty() && groupNum > 0) {
-            this.name = name;
-            this.groupNum = groupNum;
-        } else throw new IllegalArgumentException();
     }
 
     public int[] getGPA() {
