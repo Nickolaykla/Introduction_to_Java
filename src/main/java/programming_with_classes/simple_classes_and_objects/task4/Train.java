@@ -1,4 +1,4 @@
-package programming_with_classes.task4;
+package programming_with_classes.simple_classes_and_objects.task4;
 
 import java.io.BufferedReader;
 import java.io.IOException;

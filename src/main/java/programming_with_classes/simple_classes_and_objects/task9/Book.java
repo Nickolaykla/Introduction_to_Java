@@ -1,4 +1,4 @@
-package programming_with_classes.task9;
+package programming_with_classes.simple_classes_and_objects.task9;
 /*
 Создать класс Book, спецификация которого приведена ниже. Определить конструкторы, set и get методы и
 метод toString(). Создать второй класс, агрегирующий массив типа Book, с подходящими конструкторами и

@@ -1,4 +1,4 @@
-package programming_with_classes.task3;
+package programming_with_classes.simple_classes_and_objects.task3;
 
 import java.util.Arrays;
 

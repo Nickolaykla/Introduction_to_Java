@@ -1,4 +1,4 @@
-package programming_with_classes.task8;
+package programming_with_classes.simple_classes_and_objects.task8;
 /*
 Создать класс Customer. Определить конструкторы, set- и get- методы и метод toString(). Создать второй класс,
 агрегирующий массив типа Customer, с подходящими конструкторами и методами. Задать критерии выбора данных и

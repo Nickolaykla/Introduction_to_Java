@@ -1,4 +1,4 @@
-package programming_with_classes.task8;
+package programming_with_classes.simple_classes_and_objects.task8;
 
 import java.util.*;
 

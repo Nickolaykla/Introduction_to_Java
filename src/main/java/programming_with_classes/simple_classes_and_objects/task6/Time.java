@@ -1,4 +1,4 @@
-package programming_with_classes.task6;
+package programming_with_classes.simple_classes_and_objects.task6;
 
 /*
 Составьте описание класса для представления времени. Предусмотрите возможности установки времени и изменения

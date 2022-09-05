@@ -1,8 +1,4 @@
-package programming_with_classes.task7;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+package programming_with_classes.simple_classes_and_objects.task7;
 
 /*
 Описать класс, представляющий треугольник. Предусмотреть методы для создания объектов, вычисления

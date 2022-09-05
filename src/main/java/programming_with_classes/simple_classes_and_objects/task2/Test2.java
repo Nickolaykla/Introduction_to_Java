@@ -1,4 +1,4 @@
-package programming_with_classes.task2;
+package programming_with_classes.simple_classes_and_objects.task2;
 /*
 Создайте класс Test2 с двумя переменными. Добавьте конструктор с входными параметрами.
 Добавьте конструктор, инициализирующий члены класса по умолчанию. Добавьте set- и get-

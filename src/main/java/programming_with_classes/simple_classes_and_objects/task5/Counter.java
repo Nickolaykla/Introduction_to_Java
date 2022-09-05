@@ -1,4 +1,4 @@
-package programming_with_classes.task5;
+package programming_with_classes.simple_classes_and_objects.task5;
 
 /*
 Опишите класс, реализующий десятичный счетчик, который может увеличивать или уменьшать свое значение

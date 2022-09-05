@@ -1,4 +1,4 @@
-package programming_with_classes.task1;
+package programming_with_classes.simple_classes_and_objects.task1;
 
 /*
 Создайте класс Test1 с двумя переменными. Добавьте метод вывода на экран и методы изменения этих
