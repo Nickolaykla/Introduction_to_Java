@@ -14,20 +14,16 @@ public class Car {
         this.wheel = wheel;
     }
 
-    public Car() {
-        this.name = "Неизвестная машина";
+    public void move() {
+        System.out.println(this.getName() +" " + this.getEngine() + " начинает движение!");
     }
 
-    public void move(Car car) {
-        System.out.println(car.getName() +" " + car.getEngine() + " начинает движение!");
+    public void fill() {
+        System.out.println(this.getName() + " " + this.getEngine() + " заправляется.");
     }
 
-    public void fill(Car car) {
-        System.out.println(car.getName() + " " + car.getEngine() + " заправляется.");
-    }
-
-    public void changeWheel(Car car) {
-        System.out.println("В " + car.getName() + " " + car.getEngine() + " меняется колесо.");
+    public void changeWheel() {
+        System.out.println("В " + this.getName() + " " + this.getEngine() + " меняется колесо.");
     }
 
     public String getName() {

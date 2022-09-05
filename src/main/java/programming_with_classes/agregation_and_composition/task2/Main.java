@@ -13,18 +13,15 @@ public class Main {
         System.out.println(bmw);
         System.out.println(audi);
 
-        Car car = new Car();
-        car.move(audi);
-        car.move(bmw);
+        audi.move();
+        bmw.move();
 
-        car.fill(audi);
-        car.fill(bmw);
+        audi.fill();
+        bmw.fill();
 
-        car.changeWheel(audi);
-        car.changeWheel(bmw);
-
+        audi.changeWheel();
+        bmw.changeWheel();
         System.out.println(bmw.getName());
         System.out.println(audi.getName());
-
     }
 }
