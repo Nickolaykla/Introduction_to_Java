@@ -15,7 +15,6 @@ public class Main {
         text.addText(word2);
         text.addText(word3);
 
-        System.out.println(text.getHeader());
-        System.out.println(text.getTxt());
+        text.printText();
     }
 }

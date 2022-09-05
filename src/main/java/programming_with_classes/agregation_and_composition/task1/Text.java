@@ -30,4 +30,8 @@ public class Text {
     public void addText(Sentence sentence) {
         txt += " " + sentence.getSen();
     }
+    public void printText() {
+        System.out.println(getHeader());
+        System.out.println(getTxt());
+    }
 }
