@@ -54,13 +54,7 @@ public class DragonCave {
         return treasures;
     }
 
-    // берём сокровище из коллекции по id
-    public Optional<Treasure> chooseYourTreasures(List<Treasure> list, int id) {
-        return list.stream()
-                .filter(treasure -> treasure.getId() == id)
-                .findAny();
-    }
-
+    // выбор сокровищ на указанную сумму
     public Set<Treasure> makeYourChoice(List<Treasure> list, double sum) throws IOException {
         Set<Treasure> set = new HashSet<>();
         int id;
