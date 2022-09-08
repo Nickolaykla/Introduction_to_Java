@@ -11,10 +11,10 @@ import java.util.*;
 заданную сумму.
 */
 public class DragonCave {
-    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static final BufferedReader READER = new BufferedReader(new InputStreamReader(System.in));
 
     public static BufferedReader getReader() {
-        return reader;
+        return READER;
     }
 
     // добавляем сокровище
