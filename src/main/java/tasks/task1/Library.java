@@ -1,6 +1,5 @@
 package tasks.task1;
 
-import org.w3c.dom.ls.LSOutput;
 import tasks.task1.books.Book;
 import tasks.task1.books.BookType;
 import tasks.task1.roles.Administrator;
@@ -30,10 +29,10 @@ import static tasks.task1.roles.Logging.READER;
 public class Library {
     public static final List<Book> BOOKS = new ArrayList<>();
     private static String path = "/home/nickolay/IdeaProjects/Introduction_to_Java/src/main/java/tasks/task1/books/books.txt";
-    static User user = new User();
-    static Administrator admin = new Administrator();
+    private static User user = new User();
+    private static Administrator admin = new Administrator();
 
-    public static void main(String[] args) {
+    static {
         Book book1 = new Book(BOOK, "Достоевский Ф.М.", "Бесы", 700);
         Book book2 = new Book(E_BOOK, "Достоевский Ф.М.", "Братья Карамазовы", 950);
         Book book3 = new Book(BOOK, "Толстой Л.Н.", "Воскресение", 400);
@@ -47,6 +46,16 @@ public class Library {
     public static void addBooksToFile(Book book) {
         try (FileWriter writer = new FileWriter(path, true)) {
             writer.write(book + "\n");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void refreshBooksInLibrary() {
+        try(FileWriter writer = new FileWriter(path)) {
+            for (Book book : BOOKS) {
+                writer.write(book + "\n");
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -66,12 +75,12 @@ public class Library {
                         System.out.println("Всего хорошего!");
                         break;
                     case 1:
-                        Logging.logIn();
+                        Logging.register();
                         userMenu();
                         break;
                     case 2:
-                        Logging.register();
-                        adminMenu();
+                        Logging.logIn();
+                        userMenu();
                         break;
                     default:
                         throw new IllegalArgumentException("Что-то пошло не так.");
@@ -93,6 +102,7 @@ public class Library {
                 num = Integer.parseInt(READER.readLine());
                 switch (num) {
                     case 0:
+                        startMenu();
                         break;
                     case 1:
                         user.viewBooks();
@@ -106,6 +116,7 @@ public class Library {
                         String auth = READER.readLine();
                         String nam = READER.readLine();
                         user.offerBook(new Book(auth, nam));
+                    default: throw new IllegalArgumentException();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -127,12 +138,13 @@ public class Library {
                 num = Integer.parseInt(READER.readLine());
                 switch (num) {
                     case 0:
+                        startMenu();
                         break;
                     case 1:
-                        admin.viewBooks();
+                        user.viewBooks();
                     case 2:
                         String name = READER.readLine();
-                        System.out.println(admin.findBooks(name));
+                        System.out.println(user.findBooks(name));
                         break;
                     case 3:
                         System.out.println("Введите тип книги(E_BOOK, BOOK):");
@@ -151,6 +163,7 @@ public class Library {
                         admin.deleteBook(id);
                         System.out.println("Книга была убрана из библиотеки:");
                         admin.notifyUsers(BOOKS.get(id));
+                    default: throw new IllegalArgumentException();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
