@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<studentList>
+    <students>
+        <student>
+            <name>Васильев А.А.</name>
+            <course>1</course>
+            <group>10</group>
+            <faculty>ECONOMICS</faculty>
+        </student>
+        <student>
+            <name>Иванов В.У.</name>
+            <course>2</course>
+            <group>11</group>
+            <faculty>PHYSICS</faculty>
+        </student>
+        <student>
+            <name>Петрова Н.С.</name>
+            <course>3</course>
+            <group>12</group>
+            <faculty>BIOLOGY</faculty>
+        </student>
+        <student>
+            <name>Скворцова Д.П.</name>
+            <course>5</course>
+            <group>13</group>
+            <faculty>ENGINEER</faculty>
+        </student>
+        <student>
+            <name>Воробьев В.В.</name>
+            <course>4</course>
+            <group>14</group>
+            <faculty>ENGINEER</faculty>
+        </student>
+    </students>
+</studentList>
