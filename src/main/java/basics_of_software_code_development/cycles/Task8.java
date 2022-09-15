@@ -4,25 +4,26 @@ package basics_of_software_code_development.cycles;
 Даны два числа. Определить цифры, входящие в запись как первого, так и второго числа.
 */
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Task8 {
     public static void main(String[] args) {
-        sameDigits(1233, 1233);
+        findSameDigits(12345691, 1234449);
     }
-    public static void sameDigits(int num1, int num2) {
+
+    public static void findSameDigits(int num1, int num2) {
         char[] number1 = String.valueOf(num1).toCharArray();
         char[] number2 = String.valueOf(num2).toCharArray();
 
-        List<Character> list = new ArrayList<>();
-
-        for (char value1 : number1) {
-            for (char value2 : number2) {
-                if (value1 == value2)
-                    list.add(value1);
+        Set<Character> set = new HashSet<>();
+        for (char c1 : number1) {
+            for (char c2 : number2) {
+                if (c1 == c2)
+                    set.add(c1);
             }
         }
-
-        System.out.println(list);
+        System.out.println(set);
     }
 }
+
