@@ -11,7 +11,8 @@ import java.io.InputStreamReader;
 
 public class Task7 {
     public static void main(String[] args) throws IOException {
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("Задайте промежуток чисел начиная с 4:");
             int m = Integer.parseInt(reader.readLine());
             int n = Integer.parseInt(reader.readLine());
             allDividers(m, n);
@@ -19,9 +20,11 @@ public class Task7 {
     }
 
     public static void allDividers(int m, int n) {
-        if (m <= 3 || n <= 3) return;
+        if (m <= 3 || n <= 3) {
+            throw new IllegalArgumentException("Заданы некорректные значения.");
+        }
         for (int i = m; i <= n; i++) {
-            if(!isPrime(i)) {
+            if (!isPrime(i)) {
                 System.out.print("Делители " + i + ": ");
             } else System.out.print(i + " простое число");
 
@@ -33,6 +36,7 @@ public class Task7 {
             System.out.println();
         }
     }
+
     // проверка простое ли число
     public static boolean isPrime(int i) {
         for (int j = 2; j <= i / 2; j++) {
