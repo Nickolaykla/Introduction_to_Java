@@ -1,4 +1,4 @@
-package basics_of_software_code_development.cycles._8;
+package basics_of_software_code_development.cycles;
 
 /*
 Даны два числа. Определить цифры, входящие в запись как первого, так и второго числа.
@@ -6,7 +6,7 @@ package basics_of_software_code_development.cycles._8;
 
 import java.util.*;
 
-public class Solution {
+public class Task8 {
     public static void main(String[] args) {
         sameDigits(543789798, 432423123);
     }

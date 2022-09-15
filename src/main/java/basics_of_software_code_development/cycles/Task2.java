@@ -1,4 +1,4 @@
-package basics_of_software_code_development.cycles._2;
+package basics_of_software_code_development.cycles;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 /* Вычислить значения функции на отрезке [a,b] с шагом h
  * */
 
-public class Solution {
+public class Task2 {
     public static void main(String[] args) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             double a = Double.parseDouble(reader.readLine());

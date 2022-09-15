@@ -1,4 +1,4 @@
-package basics_of_software_code_development.cycles._1;
+package basics_of_software_code_development.cycles;
 
 
 import java.io.BufferedReader;
@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 суммирует все числа от 1 до введенного пользователем числа.
 * */
 
-public class Solution {
+public class Task1 {
     public static void main(String[] args) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             int i = Integer.parseInt(reader.readLine());

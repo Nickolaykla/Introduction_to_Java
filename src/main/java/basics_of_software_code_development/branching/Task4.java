@@ -1,18 +1,20 @@
-package basics_of_software_code_development.branching._4;
+package basics_of_software_code_development.branching;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.sql.SQLOutput;
 
 /* Заданы размеры А, В прямоугольного отверстия и размеры x, y, z кирпича. Определить,
 пройдет ли кирпич через отверстие
 */
-public class Solution {
+public class Task4 {
     public static void main(String[] args) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("Введите размеры отверстия:");
             double A = Double.parseDouble(reader.readLine()); // высота отверстия
             double B = Double.parseDouble(reader.readLine()); // ширина отверстия
+
+            System.out.println("Введите размеры кирпича:");
             double x = Double.parseDouble(reader.readLine()); // высота кирпича
             double y = Double.parseDouble(reader.readLine()); // ширина кирпича
             double z = Double.parseDouble(reader.readLine()); // длина кирпича

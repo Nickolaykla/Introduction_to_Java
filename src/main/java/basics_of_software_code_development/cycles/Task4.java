@@ -1,10 +1,10 @@
-package basics_of_software_code_development.cycles._4;
+package basics_of_software_code_development.cycles;
 
 import java.math.BigInteger;
 
 // Составить программу нахождения квадратов первых 200 чисел
 
-public class Solution {
+public class Task4 {
     public static void main(String[] args) {
 
         BigInteger bigInteger = BigInteger.ONE;

@@ -1,4 +1,4 @@
-package basics_of_software_code_development.cycles._7;
+package basics_of_software_code_development.cycles;
 
 /*
 Для каждого натурального числа в промежутке от m до n вывести все делители, кроме единицы и самого числа.
@@ -9,7 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Solution {
+public class Task7 {
     public static void main(String[] args) throws IOException {
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             int m = Integer.parseInt(reader.readLine());

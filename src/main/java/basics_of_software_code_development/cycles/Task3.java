@@ -1,8 +1,8 @@
-package basics_of_software_code_development.cycles._3;
+package basics_of_software_code_development.cycles;
 
 // Найти сумму квадратов первых 100 чисел.
 
-public class Solution {
+public class Task3 {
     public static void main(String[] args) {
         System.out.println(sumOfSquares(100));
     }
