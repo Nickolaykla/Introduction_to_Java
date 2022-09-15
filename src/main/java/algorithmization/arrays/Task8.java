@@ -2,7 +2,7 @@ package algorithmization.arrays;
 
 /* Дана последовательность целых чисел а1, а2...а_n. Образовать новую последовательность,
 выбросив из старой те члены, которые равны min(a1,a2...a_n).
-* */
+*/
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class Task8 {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("Введите длину массива: ");
             int n = Integer.parseInt(reader.readLine());
-            if (n < 1) return;
+            if (n < 1) throw new IllegalArgumentException("Введена некорректная длина массива.");
 
             int[] arr = new int[n];
 

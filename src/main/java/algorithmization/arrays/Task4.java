@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Random;
 
 /*
 Даны действительные числа а1, а2...а_n. Поменять местами наибольший и наименьший элементы.
@@ -14,13 +15,10 @@ public class Task4 {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("Введите длину массива: ");
             int n = Integer.parseInt(reader.readLine());
-            if (n < 1) return;
-            double[] arr = new double[n];
+            if (n < 1) throw new IllegalArgumentException("Введена некорректная длина массива");
 
-            System.out.println("Введите элементы массива: ");
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = Double.parseDouble(reader.readLine());
-            }
+            double[] arr = initArray(n);
+
             System.out.println("Изначальный массив: ");
             System.out.println(Arrays.toString(arr));
 
@@ -28,6 +26,15 @@ public class Task4 {
             minMaxExchange(arr);
         }
     }
+
+    public static double[] initArray(int size) {
+        double[] arr = new double[size];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = Math.random() * 100 - 50;
+        }
+        return arr;
+    }
+
     public static void minMaxExchange(double[] arr) {
         int minIndex = 0;
         int maxIndex = 0;
