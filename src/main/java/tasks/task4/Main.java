@@ -3,6 +3,7 @@ package tasks.task4;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 public class Main {
@@ -17,7 +18,13 @@ public class Main {
         Ship ship5 = new Ship("5", 90, 250);
 
         Collections.addAll(ships, ship1, ship2, ship3, ship4, ship5);
-          new ShipLoader(s);
-          new ShipUnloader(s);
+
+        // получаем случайное значение - 0 или 1, которое определяет цель прибытия корабля в порт(загрузка, выгрузка)
+        for (Ship ship : ships) {
+            int num = new Random().nextInt(2);
+            if (num == 0) {
+                new ShipLoader(s, ship);
+            } else new ShipUnloader(s, ship);
+        }
     }
 }

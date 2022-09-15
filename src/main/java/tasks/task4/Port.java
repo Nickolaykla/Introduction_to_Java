@@ -24,6 +24,8 @@ public class Port {
     }
 
     public static void setCurrentPortCapacity(int currentPortCapacity) {
-        Port.currentPortCapacity = currentPortCapacity;
+        if (currentPortCapacity >= 0) {
+            Port.currentPortCapacity = currentPortCapacity;
+        } else throw new IllegalArgumentException("Неверно задана текущая загруженность порта");
     }
 }
