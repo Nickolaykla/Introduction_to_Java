@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /*
 Объединить 2 массива в один массив, включив второй массив между k-м и (k+1)-м элементами первого.
-* */
+*/
 public class Task1 {
     private static final Scanner IN = new Scanner(System.in);
 

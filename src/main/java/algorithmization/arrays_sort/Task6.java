@@ -13,9 +13,11 @@ import java.util.Scanner;
 public class Task6 {
     public static void main(String[] args) {
         int[] arr = initArray();
+        System.out.println("Исходный массив:");
         System.out.println(Arrays.toString(arr));
 
         shellSort(arr);
+        System.out.println("Результат:");
         System.out.println(Arrays.toString(arr));
     }
 

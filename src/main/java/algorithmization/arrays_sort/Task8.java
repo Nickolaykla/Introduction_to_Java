@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 /*
 Даны дроби p1/q1, p2/q2...pn/qn(p, q - натуральные). Составить программу, которая
 приводит эти дроби к общему знаменателю и упорядочивает их в порядке возрастания.
-* */
+*/
 public class Task8 {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
@@ -66,4 +66,3 @@ public class Task8 {
         System.out.println(Arrays.toString(numerator));
     }
 }
-

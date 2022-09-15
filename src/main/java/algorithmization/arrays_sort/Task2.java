@@ -2,7 +2,7 @@ package algorithmization.arrays_sort;
 
 /*
 Даны 2 неубывающие последовательности. Образовать из них новую.
-* */
+*/
 
 import java.util.Arrays;
 import java.util.stream.IntStream;

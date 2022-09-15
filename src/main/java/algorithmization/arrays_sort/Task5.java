@@ -6,11 +6,13 @@ import java.util.Scanner;
 /*
 Сортировка вставками. Место помещения очередного элемента в отсортированную часть производить с помощью
 двоичного поиска. Двоичный поиск оформить в виде отдельной функции.
-* */
+*/
 public class Task5 {
     public static void main(String[] args) {
         int[] arr = initArray();
+        System.out.println("Исходный массив:");
         System.out.println(Arrays.toString(arr));
+        System.out.println("Результат:");
         insertionSort(arr);
         System.out.println(Arrays.toString(arr));
     }

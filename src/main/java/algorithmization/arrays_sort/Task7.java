@@ -4,8 +4,7 @@ package algorithmization.arrays_sort;
 Пусть даны две неубывающие последовательности действительных чисел. Требуется
 указать те места, на которые нужно вставить элементы 2 последовательности в 1,
 так, чтобы новая последовательность оставалась возрастающей.
-
-* */
+*/
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -50,7 +49,7 @@ public class Task7 {
     }
 
     public static int[] initSortArray(int len) {
-        if (len <= 0) throw new IllegalArgumentException();
+        if (len <= 0) throw new IllegalArgumentException("Некорректный размер массива.");
 
         int[] arr = new int[len];
         for (int i = 0; i < arr.length; i++) {
@@ -67,4 +66,3 @@ public class Task7 {
         }
     }
 }
-
