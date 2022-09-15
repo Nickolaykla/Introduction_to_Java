@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class Task3 {
     private static final Scanner IN = new Scanner(System.in);
+
     public static void main(String[] args) {
         int[][] array = initialArray(); // инициализируем массив
         printInitialArray(array); // выводим начальный массив
@@ -21,22 +22,22 @@ public class Task3 {
     }
 
     public static int[][] initialArray() {
-            System.out.println("Введите количество строк:");
-            int n = IN.nextInt();
-            System.out.println("Введите количество столбцов: ");
-            int k = IN.nextInt();
-            if (n <= 0 || k <= 0) {
-                throw new IllegalArgumentException();
-            }
-            int[][] arr = new int[n][k];
-
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < k; j++) {
-                    arr[i][j] = (int) (Math.random() * 131);
-                }
-            }
-            return arr;
+        System.out.println("Введите количество строк:");
+        int n = IN.nextInt();
+        System.out.println("Введите количество столбцов: ");
+        int k = IN.nextInt();
+        if (n <= 0 || k <= 0) {
+            throw new IllegalArgumentException("Введена некорректная размерность матрицы.");
         }
+        int[][] arr = new int[n][k];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < k; j++) {
+                arr[i][j] = (int) (Math.random() * 131);
+            }
+        }
+        return arr;
+    }
 
     public static void printInitialArray(int[][] arr) {
         System.out.println("Исходный массив: ");

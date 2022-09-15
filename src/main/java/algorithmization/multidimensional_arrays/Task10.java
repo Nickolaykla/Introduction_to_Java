@@ -2,7 +2,7 @@ package algorithmization.multidimensional_arrays;
 
 /*
 Найти положительные элементы главной диагонали квадратной матрицы
-* */
+*/
 
 import java.util.Scanner;
 
@@ -27,8 +27,7 @@ public class Task10 {
             System.out.println("Введите размерность матрицы: ");
             int n = in.nextInt();
             if (n <= 0) {
-                System.out.println("Некорректный размер");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Некорректная размерность.");
             }
             int[][] arr = new int[n][n];
 

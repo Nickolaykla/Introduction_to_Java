@@ -3,7 +3,7 @@ package algorithmization.multidimensional_arrays;
 /*
 Сформировать случайную матрицу m x n, состоящую из нулей и единиц, причем в каждом столбце число
 единиц равно номеру столбца.
-* */
+*/
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -28,8 +28,7 @@ public class Task14 {
             int n = in.nextInt(); // Строки
             int k = in.nextInt(); // Столбцы
             if (n <= 0 || k <= 0) {
-                System.out.println("Введены некорректные данные");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Введены некорректные данные");
             }
             int[][] arr = new int[n][k];
 

@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 /* Сформировать квадратную матрицу порядка N по правилу:
 A[I,J] = sin((I^2 - J^2) / N) и подсчитать количество положительных элементов в ней.
-* */
+*/
 
 public class Task7 {
     public static void main(String[] args) {
         try(Scanner in = new Scanner(System.in)) {
             System.out.println("Введите размерность матрицы: ");
             int N = in.nextInt();
-            if(N <= 0) return;
+            if(N <= 0) throw new IllegalArgumentException("Некорректная размерность матрицы.");
             double[][] arr = new double[N][N];
 
             printArray(arr);

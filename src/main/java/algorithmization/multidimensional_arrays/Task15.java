@@ -2,14 +2,14 @@ package algorithmization.multidimensional_arrays;
 
 /*
 Найдите наибольший элемент матрицы и замените все нечетные элементы на него.
-* */
+*/
 
 import java.util.Scanner;
 
 public class Task15 {
     public static void main(String[] args) {
         int[][] arr = initialArray();
-        System.out.println("Исходный массив: ");
+        System.out.println("Исходный массив:");
         printArray(arr);
 
         System.out.println();
@@ -17,12 +17,11 @@ public class Task15 {
     }
     public static int[][] initialArray() {
         try (Scanner in = new Scanner(System.in)) {
-            System.out.println("Введите размерность матрицы: ");
+            System.out.println("Введите размерность матрицы:");
             int n = in.nextInt();
             int k = in.nextInt();
             if (n <= 0 || k <= 0) {
-                System.out.println("Некорректный размер");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Некорректная размерность матрицы.");
             }
             int[][] arr = new int[n][k];
 
@@ -44,7 +43,7 @@ public class Task15 {
     }
     public static void changeOddElemsToMax(int[][] arr) {
         // Находим наибольший элемент в матрице
-        int maxElem = 0;
+        int maxElem = arr[0][0];
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
                 if(arr[i][j] > maxElem) maxElem = arr[i][j];

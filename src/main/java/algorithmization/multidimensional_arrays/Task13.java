@@ -2,7 +2,7 @@ package algorithmization.multidimensional_arrays;
 
 /*
 Отсортировать столбцы матрицы по возрастанию и убыванию элементов
-* */
+*/
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -14,21 +14,21 @@ public class Task13 {
         printArray(arr);
         System.out.println();
 
-        System.out.println("Колонки отсортированы по возрастанию: ");
+        System.out.println("Колонки отсортированы по возрастанию:");
         naturalOrderColumnsSort(arr);
 
-        System.out.println("Колонки отсортированы по убыванию: ");
+        System.out.println("Колонки отсортированы по убыванию:");
         reverseOrderColumnsSort(arr);
     }
     // Создание матрицы и заполнение случайными значениями
     public static int[][] initialArray() {
         try (Scanner in = new Scanner(System.in)) {
-            System.out.println("Введите размерность матрицы: ");
+            System.out.println("Введите размерность матрицы:");
             int n = in.nextInt();
             int k = in.nextInt();
             if (n <= 0 || k <= 0) {
-                System.out.println("Некорректный размер");
-                throw new IllegalArgumentException();
+                System.out.println();
+                throw new IllegalArgumentException("Некорректная размерность матрицы.");
             }
             int[][] arr = new int[n][k];
 

@@ -11,7 +11,7 @@ import java.util.Scanner;
         ...............
         0 1 1 ... 1 1 0
         1 1 1 ... 1 1 1
-* */
+*/
 public class Task6 {
     public static void main(String[] args) {
         printInitialArray(initArray());
@@ -34,7 +34,7 @@ public class Task6 {
             System.out.println("Введите количество строк, столбцов: ");
             int n = in.nextInt();
 
-            if (n <= 0 || n % 2 != 0) throw new IllegalArgumentException();
+            if (n <= 0 || n % 2 != 0) throw new IllegalArgumentException("Некорректная размерность матрицы.");
 
             int[][] arr = new int[n][n];
             int number = 1;

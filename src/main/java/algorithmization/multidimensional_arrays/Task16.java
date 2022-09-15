@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /*
 Построить магический квадрат
-* */
+*/
 public class Task16 {
 
     private static final Scanner IN = new Scanner(System.in);
@@ -19,8 +19,7 @@ public class Task16 {
 
         int[][] arr = new int[n][n];
         if (n % 4 != 0){
-            System.out.println("Некорректные данные");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Некорректная размерность");
         }
         int start = 1;
         int end = n*n;

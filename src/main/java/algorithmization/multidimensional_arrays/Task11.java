@@ -1,7 +1,7 @@
 package algorithmization.multidimensional_arrays;
 /* Матрицу 10х20 заполнить случайными числами от 0 до 15. Вывести на экран саму матрицу и номера
 строк, в которых число 5 встречается 3 и более раз.
-* */
+*/
 public class Task11 {
     public static void main(String[] args) {
         int[][] arr = initArray();

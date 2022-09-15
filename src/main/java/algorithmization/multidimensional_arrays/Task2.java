@@ -28,8 +28,7 @@ public class Task2 {
             System.out.println("Введите размерность матрицы: ");
             int n = in.nextInt();
             if (n <= 0) {
-                System.out.println("Некорректный размер");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Некорректный размер матрицы");
             }
             int[][] arr = new int[n][n];
 

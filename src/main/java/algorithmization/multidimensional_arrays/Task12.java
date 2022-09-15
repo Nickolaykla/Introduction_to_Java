@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /*
 Отсортировать строки матрицы по возрастанию и убыванию значений элементов
-* */
+*/
 public class Task12 {
     public static void main(String[] args) {
         int[][] arr = initialArray();
@@ -22,6 +22,7 @@ public class Task12 {
         System.out.println("По убыванию: ");
         reverseOrderSortLines(arr);
     }
+
     // Создание матрицы и заполнение случайными значениями
     public static int[][] initialArray() {
         try (Scanner in = new Scanner(System.in)) {
@@ -29,9 +30,9 @@ public class Task12 {
             int n = in.nextInt();
             int k = in.nextInt();
             if (n <= 0 || k <= 0) {
-                System.out.println("Некорректный размер");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Некорректный размер матрицы");
             }
+
             int[][] arr = new int[n][k];
 
             for (int i = 0; i < arr.length; i++) {
@@ -42,6 +43,7 @@ public class Task12 {
             return arr;
         }
     }
+
     // Сортировка строк по возрастанию
     public static void naturalOrderSortLines(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
@@ -49,17 +51,19 @@ public class Task12 {
         }
         printArray(arr);
     }
+
     // Сортировка строк в обратном порядке
     public static void reverseOrderSortLines(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
-           arr[i] = Arrays.stream(arr[i])
-                   .boxed()
-                   .sorted(Comparator.reverseOrder())
-                   .mapToInt(Integer::intValue)
-                   .toArray();
+            arr[i] = Arrays.stream(arr[i])
+                    .boxed()
+                    .sorted(Comparator.reverseOrder())
+                    .mapToInt(Integer::intValue)
+                    .toArray();
         }
         printArray(arr);
     }
+
     // Вывод изначальной матрицы
     public static void printArray(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {

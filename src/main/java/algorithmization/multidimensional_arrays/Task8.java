@@ -3,7 +3,7 @@ package algorithmization.multidimensional_arrays;
 /* В числовой матрице поменять местами два любых столбца, т.е. все элементы одного столбца поставить на
 соответствующие им позиции другого, а его элементы переместить в первый. Номера столбцов вводит пользователь
 с клавиатуры.
-* */
+*/
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -26,7 +26,7 @@ public class Task8 {
         int second = IN.nextInt();
 
         exchangeColumns(arr, first, second);
-
+        IN.close();
     }
     public static int[][] initialArray() {
         System.out.println("Введите количество строк:");
@@ -34,7 +34,7 @@ public class Task8 {
         System.out.println("Введите количество столбцов: ");
         int k = IN.nextInt();
         if (n <= 0 || k <= 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Задан некорректный размер матрицы.");
         }
         int[][] arr = new int[n][k];
 
@@ -47,7 +47,7 @@ public class Task8 {
     }
 
     public static void exchangeColumns(int[][] arr, int first, int second) {
-        if (first < 1 || second < 1 || first > arr.length || second > arr.length) {
+        if (first < 1 || second < 1 || first > arr.length || second > arr[0].length) {
             System.out.println("Введены некорректные данные.");
             throw new IllegalArgumentException();
         }

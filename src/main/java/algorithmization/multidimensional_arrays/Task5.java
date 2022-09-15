@@ -9,7 +9,7 @@ import java.util.Scanner;
         ...................
         n-1 n-1 0 ... 0 0 0
         n   0   0 ... 0 0 0
-* */
+*/
 
 public class Task5 {
     public static void main(String[] args) {
@@ -31,7 +31,7 @@ public class Task5 {
             System.out.println("Введите количество строк, столбцов: ");
             int n = in.nextInt();
 
-            if (n <= 0 || n % 2 != 0) throw new IllegalArgumentException();
+            if (n <= 0 || n % 2 != 0) throw new IllegalArgumentException("Задана некорректная размерность матрицы.");
 
             int[][] arr = new int[n][n];
             int number = 1;

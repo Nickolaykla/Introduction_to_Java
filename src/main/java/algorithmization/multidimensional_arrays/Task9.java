@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /* Задана матрица неотрицательных чисел. Посчитать сумму элементов в каждом столбце. Определить,
 какой столбец содержит максимальную сумму.
-* */
+*/
 
 public class Task9 {
     public static void main(String[] args) {
@@ -28,6 +28,7 @@ public class Task9 {
                     arr[i][j] = (int) (Math.random() * 131);
                 }
             }
+
             // Выводим заполненный массив
             System.out.println("Исходный массив: ");
             for (int i = 0; i < arr.length; i++) {

@@ -16,15 +16,12 @@ public class Task4 {
     }
     public static int[][] initArray() {
         try(Scanner in = new Scanner(System.in)) {
-            System.out.println("Введите количество строк: ");
+            System.out.println("Введите размерность матрицы:");
             int n = in.nextInt();
 
-            System.out.println("Введите количество столбцов: ");
-            int k = in.nextInt();
+            if (n < 2 || n % 2 != 0) throw new IllegalArgumentException("Некорректная размерность матрицы.");
 
-            if (n != k || n % 2 != 0) throw new IllegalArgumentException();
-
-            int[][] arr = new int[n][k];
+            int[][] arr = new int[n][n];
             int number = 1;
             for (int i = 0; i < arr.length; i++) {
                 for (int j = 0; j < arr.length; j++) {
