@@ -7,14 +7,14 @@ import java.util.Scanner;
 Задан массив D. Определить следующие суммы: D[1] + D[2] + D[3]; D[3] + D[4] + D[5]; D[4] + D[5] + D[6].
 Составить метод(методы) для вычисления суммы трех последовательно расположенных элементов массива с
 номерами от k до m.
-* */
+*/
 public class Task8 {
     public static void main(String[] args) {
         int[] arr = initArray();
         System.out.println("Изначальный массив: ");
         System.out.println(Arrays.toString(arr));
 
-        int sum = getTripleSum(arr, 1, 3);
+        int sum = getTripleSum(arr, 1, 5);
         System.out.println("Сумма = " + sum);
     }
 
@@ -39,8 +39,7 @@ public class Task8 {
             System.out.println("Введите размер массива: ");
             int len = in.nextInt();
             if (len < 1) {
-                System.out.println("Неверная длина массива");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Неверная длина массива");
             }
             int[] arr = new int[len];
             for (int i = 0; i < arr.length; i++) {

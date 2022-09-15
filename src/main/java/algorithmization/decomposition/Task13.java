@@ -5,7 +5,7 @@ import java.util.Scanner;
 /*
 Найти и напечатать все пары "близнецов" из отрезка [n,2n], где n - заданное
 натуральное число больше 2. Для решения использовать декомпозицию.
-* */
+*/
 public class Task13 {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {

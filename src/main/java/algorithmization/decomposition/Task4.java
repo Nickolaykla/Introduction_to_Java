@@ -5,7 +5,7 @@ import java.util.Scanner;
 /*
 На плоскости заданы своими координатами n точек. Написать методы, определяющие,
 между какими из пар точек самое большое расстояние. Координаты точек занести в массив.
-* */
+*/
 public class Task4 {
     public static void main(String[] args) {
         try(Scanner in = new Scanner(System.in)) {

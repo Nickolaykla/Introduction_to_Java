@@ -5,7 +5,7 @@ import java.util.Scanner;
 /*
 Даны числа X, Y, Z, T - длины сторон четырехугольника. Написать метод(методы) вычисления
 его площади, если угол между сторонами длиной Х и У - прямой.
-* */
+*/
 public class Task9 {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
@@ -16,8 +16,7 @@ public class Task9 {
             double t = in.nextDouble();
 
             if (x <= 0 || y <= 0 || z <= 0 || t <= 0) {
-                System.out.println("Введены некорректные данные");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Введены некорректные данные");
             }
             // Вычислим гипотенузу прямоугольного треугольника / сторону 2 треугольника
             double hypot = Math.sqrt(x * x + y * y);
@@ -27,8 +26,7 @@ public class Task9 {
                 double getQuadSq = getQuadrilateralSquare(firstTriangleSq, secondTriangleSq); // площадь четырехугольн.
                 System.out.printf("%.2f", getQuadSq);
             } else {
-                System.out.println("Введены неверные данные");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Введены неверные данные");
             }
         }
     }

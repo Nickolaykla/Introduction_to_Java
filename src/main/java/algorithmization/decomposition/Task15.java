@@ -5,7 +5,7 @@ import java.util.Scanner;
 /*
 Найти все натуральные n-значные числа, цифры в которых образуют строго
 возрастающую последовательность (например, 1234, 5789).
-* */
+*/
 public class Task15 {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {

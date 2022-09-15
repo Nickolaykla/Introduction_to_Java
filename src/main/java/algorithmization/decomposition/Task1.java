@@ -12,7 +12,9 @@ public class Task1 {
             System.out.println("Введите 2 числа: ");
             int k = in.nextInt();
             int n = in.nextInt();
-            if (n < 1 || k < 1) return;
+            if (n < 1 || k < 1) {
+                throw new IllegalArgumentException("Числа должны быть натуральными");
+            }
 
             System.out.println("НОД " + k + " и " + n + " = " + gcd(k,n));
             System.out.println("НОК " + k + " и " + n + " = " + lcm(k,n));

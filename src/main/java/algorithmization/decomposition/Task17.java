@@ -5,7 +5,7 @@ import java.util.Scanner;
 /*
 Из заданного числа вычли сумму его цифр. Из результата вновь вычли сумму его цифр и т.д.
 Сколько таких действий надо произвести, чтобы получился нуль?
-* */
+*/
 public class Task17 {
     public static void main(String[] args) {
         try(Scanner in = new Scanner(System.in)) {

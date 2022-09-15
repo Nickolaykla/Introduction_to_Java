@@ -5,7 +5,7 @@ import java.util.Scanner;
 /*
 Вычислить площадь правильного шестиугольника со стороной а, используя метод
 вычисления площади треугольника.
-* */
+*/
 public class Task3 {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
@@ -18,12 +18,12 @@ public class Task3 {
     }
 
     public static double getTriangleSquare(double a) {
-        if (a < 0) return -1;
+        if (a <= 0) throw new IllegalArgumentException();
         return a * a * Math.sqrt(3) / 4;
     }
 
     public static double getHexagonSquare(double a) {
-        if (a < 0) return -1;
+        if (a <= 0) throw new IllegalArgumentException();
         return 6 * getTriangleSquare(a);
     }
 }
