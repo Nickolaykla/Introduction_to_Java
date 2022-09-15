@@ -1,4 +1,4 @@
-package basics_of_software_code_development.line_programs._6;
+package basics_of_software_code_development.line_programs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 Для данной области составить линейную программу, которая печатает true, если точка с
 координатами (x, y) принадлежит закрашенной области, и false - в противном случае.
 */
-public class Solution {
+public class Task6 {
     public static void main(String[] args) throws IOException {
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             int x = Integer.parseInt(reader.readLine());
