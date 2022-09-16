@@ -5,7 +5,7 @@ package programming_with_classes.simple_classes_and_objects.task6;
 его отдельных полей(час, минута, секунда) с проверкой допустимости вводимых значений. В случае недопустимых
 значений полей поле устанавливается в значение 0. Создать методы изменения времени на заданное количество часов,
 минут и секунд.
-* */
+*/
 public class Time {
     private int hours;
     private int minutes;
@@ -23,24 +23,6 @@ public class Time {
             this.minutes = 0;
             this.seconds = 0;
         }
-    }
-
-    public static void main(String[] args) {
-        Time time = new Time(10, 50, 40);
-        System.out.println("Изначальное время:");
-        System.out.println(time);
-
-        time.changeSeconds(time, 4000);
-        System.out.println("Время после изменения на заданное количество секунд:");
-        System.out.println(time);
-
-        time.changeMinutes(time, 200);
-        System.out.println("Время после изменения на заданное количество минут:");
-        System.out.println(time);
-
-        time.changeHours(time, 30);
-        System.out.println("Время после изменения на заданное количество часов:");
-        System.out.println(time);
     }
 
     public int getHours() {
@@ -74,29 +56,29 @@ public class Time {
     }
 
     public void changeHours(Time time, int hours) {
-        if (getHours() + hours <= 23) {
-            time.setHours((getHours() + hours));
+        if (time.getHours() + hours <= 23) {
+            time.setHours((time.getHours() + hours));
         } else {
-                time.setHours(getHours() + (hours % 24));
+            time.setHours(time.getHours() + (hours % 24));
         }
     }
 
     public void changeMinutes(Time time, int minutes) {
-        if (getMinutes() + minutes <= 59) {
-            time.setMinutes(getMinutes() + minutes);
+        if (time.getMinutes() + minutes <= 59) {
+            time.setMinutes(time.getMinutes() + minutes);
         } else {
-            time.setMinutes((getMinutes() + minutes) % 60);
-            time.changeHours(time, (getMinutes() + minutes) / 60);
+            time.changeHours(time, (time.getMinutes() + minutes) / 60);
+            time.setMinutes((time.getMinutes() + minutes) % 60);
         }
     }
 
     public void changeSeconds(Time time, int seconds) {
-        if (getSeconds() + seconds <= 59) {
+        if (time.getSeconds() + seconds <= 59) {
             time.setSeconds(getSeconds() + seconds);
         } else {
-            time.setSeconds((getSeconds() + seconds) % 60);
-            time.changeMinutes(time, ((getSeconds() + seconds) / 60) % 60);
-            time.changeHours(time, (getSeconds() + seconds) / 60 / 60);
+            time.changeHours(time, (time.getSeconds() + seconds) / 60 / 60);
+            time.changeMinutes(time, ((time.getSeconds() + seconds) / 60) % 60);
+            time.setSeconds((time.getSeconds() + seconds) % 60);
         }
     }
 

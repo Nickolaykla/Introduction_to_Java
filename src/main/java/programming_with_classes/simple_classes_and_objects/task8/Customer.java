@@ -1,4 +1,5 @@
 package programming_with_classes.simple_classes_and_objects.task8;
+
 /*
 Создать класс Customer. Определить конструкторы, set- и get- методы и метод toString(). Создать второй класс,
 агрегирующий массив типа Customer, с подходящими конструкторами и методами. Задать критерии выбора данных и
@@ -7,9 +8,11 @@ package programming_with_classes.simple_classes_and_objects.task8;
 Найти и вывести:
 а) список покупателей в алфавитном порядке;
 б) список покупателей, у которых номер кредитной карточки находится в заданном интервале
-* */
+*/
 public class Customer {
-    private int id;
+    private static int id;
+    private int customerId;
+
     private String surName;
     private String firstName;
     private String lastName;
@@ -17,11 +20,11 @@ public class Customer {
     private String creditCardNumber;
     private String bankAccountNumber;
 
-    public Customer(int id, String surName, String firstName, String lastName,
+    public Customer(String surName, String firstName, String lastName,
                     String address, String creditCardNumber, String bankAccountNumber) {
-        if (id >= 0 && surName != null && firstName != null && lastName != null &&
-                address != null && creditCardNumber.length() == 6 && bankAccountNumber.length() == 6) {
-            this.id = id;
+        if (surName != null && firstName != null && lastName != null && address != null &&
+                creditCardNumber.length() == 6 && bankAccountNumber.length() == 6) {
+            this.customerId = id++;
             this.surName = surName;
             this.firstName = firstName;
             this.lastName = lastName;
@@ -29,13 +32,12 @@ public class Customer {
             this.creditCardNumber = creditCardNumber;
             this.bankAccountNumber = bankAccountNumber;
         } else {
-            System.out.println("Заданы неверные данные");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Заданы некорректные данные");
         }
     }
 
-    public int getId() {
-        return id;
+    public int getCustomerId() {
+        return customerId;
     }
 
     public String getSurName() {
@@ -46,8 +48,7 @@ public class Customer {
         if (!surName.isEmpty()) {
             this.surName = surName;
         } else {
-            System.out.println("Некорректные данные");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Некорректная фамилия");
         }
     }
 
@@ -55,8 +56,7 @@ public class Customer {
         if (!firstName.isEmpty()) {
             this.firstName = firstName;
         } else {
-            System.out.println("Некорректные данные");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Некорректное имя");
         }
     }
 
@@ -64,8 +64,7 @@ public class Customer {
         if (!lastName.isEmpty()) {
             this.lastName = lastName;
         } else {
-            System.out.println("Некорректные данные");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Некорректное отчество");
         }
     }
 
@@ -73,10 +72,26 @@ public class Customer {
         if (!address.isEmpty()) {
             this.address = address;
         } else {
-            System.out.println("Некорректные данные");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Некорректный адрес");
         }
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getBankAccountNumber() {
+        return bankAccountNumber;
+    }
+
     public String getCreditCardNumber() {
         return creditCardNumber;
     }
@@ -85,8 +100,7 @@ public class Customer {
         if (creditCardNumber.length() == 6) {
             this.creditCardNumber = creditCardNumber;
         } else {
-            System.out.println("Некорректные данные");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Неверно задан номер кредитной карты");
         }
     }
 
@@ -94,15 +108,14 @@ public class Customer {
         if (bankAccountNumber.length() == 6) {
             this.bankAccountNumber = bankAccountNumber;
         } else {
-            System.out.println("Некорректные данные");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Неверно задан номер банковского счёта");
         }
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "id=" + id +
+                "id=" + customerId +
                 ", surName='" + surName + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
