@@ -6,36 +6,35 @@ public class BookArray {
     private Book[] books;
 
     public BookArray(Book[] books) {
-        this.books = books;
-    }
-
-    public void getBooksByAuthor(String author) {
-        if(author != null) {
-            for (Book book : books) {
-                if (book.getAuthor().equalsIgnoreCase(author)) {
-                    System.out.println(book);
-                }
-            }
-        } else System.out.println("Неверные данные");
-    }
-
-    public void getBooksByPublisher(String publisher) {
-        if (publisher != null) {
-            Arrays.stream(books)
-                    .filter(book -> book.getPublisher().equalsIgnoreCase(publisher))
-                    .forEach(System.out::println);
-        } else System.out.println("Неверные данные");
-    }
-
-    public void getBooksAfterSomeYear(int year) {
-        if(year > 0) {
-            for (Book book : books) {
-                if (book.getYearOfPublish() >= year) {
-                    System.out.println(book);
-                }
-            }
-        } else {
-            System.out.println("Неверные данные");
+        if (books != null) {
+            this.books = books;
         }
+    }
+
+    public Book[] getBooksByAuthor(String author) {
+        return Arrays.stream(books)
+                .filter(book -> book.getAuthor().equalsIgnoreCase(author))
+                .toArray(Book[]::new);
+    }
+
+    public Book[] getBooksByPublisher(String publisher) {
+        return Arrays.stream(books)
+                .filter(book -> book.getPublisher().equalsIgnoreCase(publisher))
+                .toArray(Book[]::new);
+    }
+
+    public Book[] getBooksAfterSomeYear(int year) {
+        if(year <= 0) throw new IllegalArgumentException("Некорректно задан год");
+       return Arrays.stream(books)
+               .filter(book -> book.getYearOfPublish() > year)
+               .toArray(Book[]::new);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(Book book : books)
+            sb.append(book).append("\n");
+        return sb.toString();
     }
 }
