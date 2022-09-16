@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /*
 В строке найти количество цифр
-* */
+*/
 public class Task3 {
     public static void main(String[] args) {
         try(Scanner in = new Scanner(System.in)) {

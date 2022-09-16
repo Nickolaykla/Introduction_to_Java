@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /*
 Вводится строка. Требуется удалить из нее повторяющиеся символы и все пробелы.
-* */
+*/
 public class Task7 {
     public static void main(String[] args) {
         try(Scanner in = new Scanner(System.in)) {

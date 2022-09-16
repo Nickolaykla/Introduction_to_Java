@@ -7,10 +7,11 @@ import java.util.regex.Pattern;
 /*
 Строка Х состоит из нескольких предложений, каждое из которых кончается точкой, восклицательным
 или вопросительным знаком. Определить количество предложений в строке Х.
-* */
+*/
 public class Task10 {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
+            System.out.println("Введите строку:");
             String s = in.nextLine();
             System.out.println(sentenceCount(s));
         }

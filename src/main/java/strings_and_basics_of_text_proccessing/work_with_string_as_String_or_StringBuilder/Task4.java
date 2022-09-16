@@ -1,9 +1,9 @@
 package strings_and_basics_of_text_proccessing.work_with_string_as_String_or_StringBuilder;
 
 /*
-С помощью функции копирования и операции конкатенации состави из частей слова
+С помощью функции копирования и операции конкатенации составить из частей слова
 "информатика" слово "торт".
-* */
+*/
 public class Task4 {
     public static void main(String[] args) {
         String s = "информатика";

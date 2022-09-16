@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 /*
 В строке найти количество чисел.
-* */
+*/
 public class Task4 {
     public static void main(String[] args) {
         try(Scanner in = new Scanner(System.in)) {

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /*
 Из заданной строки получить новую, повторив каждый символ дважды.
-* */
+*/
 public class Task6 {
     public static void main(String[] args) {
         try(Scanner in = new Scanner(System.in)) {

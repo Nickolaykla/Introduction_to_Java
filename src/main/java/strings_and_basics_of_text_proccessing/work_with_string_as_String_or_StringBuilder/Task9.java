@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 /*
 Посчитать количество строчных(маленьких) и прописных(больших) букв во введенной строке.
 Учитывать только английские буквы.
-* */
+*/
 public class Task9 {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
@@ -16,8 +16,8 @@ public class Task9 {
             System.out.println("Введенная строка:");
             System.out.println(s);
 
-            System.out.println("Количество строчных букв = " + getLowerCaseCount(s));
-            System.out.println("Количество прописных букв = " + getUpperCaseCount(s));
+            System.out.println("Количество строчных английских букв = " + getLowerCaseCount(s));
+            System.out.println("Количество прописных английских букв = " + getUpperCaseCount(s));
         }
     }
 

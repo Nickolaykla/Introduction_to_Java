@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /*
 Дан текст(строка). Найдите наибольшее количество подряд идущих пробелов в нем.
-* */
+*/
 public class Task1 {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
