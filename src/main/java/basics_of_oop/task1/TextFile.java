@@ -1,34 +1,50 @@
 package basics_of_oop.task1;
 
-import java.io.File;
-import java.nio.file.Files;
-
 /*
-Создать объект класса Текстовый Файл, используя классы Файл, Директория.
-Методы: создать, переименовать, вывести на консоль содержимое, дополнить, удалить.
+Создать объект класса Текстовый файл, используя классы Файл, Директория. Методы: создать, переименовать,
+вывести на консоль содержимое, дополнить, удалить.
 */
+
 public class TextFile {
-    private Directory directory;
-    private SimpleFile simpleFile;
-    private File file;
+    Directory directory;
+    File file;
 
-    public TextFile(File file) {
-        this.file = file;
+    public TextFile(Directory directory, File file) {
+        if (directory != null && file != null) {
+            this.directory = directory;
+            this.file = file;
+        } else throw new IllegalArgumentException("Некорректные данные");
     }
 
-    public Directory getDirectory() {
-        return directory;
+    public static TextFile createFile(Directory directory, File file) {
+        if (directory != null && file != null) {
+            return new TextFile(directory, file);
+        } else throw new IllegalArgumentException("Заданы неверные значения");
     }
 
-    public void setDirectory(Directory directory) {
-        this.directory = directory;
+    public void renameFile(String name) {
+        if (file != null && name != null) {
+            file.setName(name);
+        }
     }
 
-    public SimpleFile getFile() {
-        return simpleFile;
+    public void printFileContext() {
+        file.getContent().forEach(System.out::println);
     }
 
-    public void setSimpleFile(SimpleFile simpleFile) {
-        this.simpleFile = simpleFile;
+    public void addToFile(String text) {
+        if (file != null && text != null) {
+            file.getContent().add(text);
+        }
+    }
+
+    public void deleteFile() {
+        file.getContent().clear();
+        file.setName("");
+    }
+
+    @Override
+    public String toString() {
+        return  directory + "/" + file;
     }
 }

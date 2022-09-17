@@ -1,17 +1,16 @@
 package basics_of_oop.task1;
 
 public class Directory {
-    String name = "";
+    String directory;
 
-    public Directory(String name) {
-        this.name = name;
+    public Directory(String directory) {
+        if (directory != null) {
+            this.directory = directory;
+        }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public String toString() {
+        return directory;
     }
 }
