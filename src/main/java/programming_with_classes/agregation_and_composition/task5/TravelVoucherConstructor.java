@@ -1,22 +1,26 @@
 package programming_with_classes.agregation_and_composition.task5;
 
+import programming_with_classes.agregation_and_composition.task5.enums.FoodType;
+import programming_with_classes.agregation_and_composition.task5.enums.Transport;
+import programming_with_classes.agregation_and_composition.task5.enums.VoucherType;
+
 // Класс предназначен для создания пользователем путёвки и получения предложения по заданной путёвке.
 public class TravelVoucherConstructor {
 
     public VoucherType chooseVoucherType(String type) {
         switch (type) {
-            case "REST":
+            case "rest":
                 return VoucherType.REST;
-            case "EXCURSION":
+            case "excursion":
                 return VoucherType.EXCURSION;
-            case "TREATMENT":
+            case "treatment":
                 return VoucherType.TREATMENT;
-            case "SHOPPING":
+            case "shopping":
                 return VoucherType.SHOPPING;
-            case "CRUISE":
+            case "cruise":
                 return VoucherType.CRUISE;
             default:
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("Некорректно введен тип путешествия");
         }
     }
 

@@ -8,21 +8,23 @@ Airline: пункт назначения, номер рейса, тип само
 а)список рейсов для заданного пункта назначения;
 б)список рейсов для заданного дня недели;
 с)список рейсов для заданного дня недели, время вылета для которых больше заданного.
-* */
+*/
 
 public class Airline {
     private String destination;
     private int flightNumber;
-    private String airplaneType;
+    private AirplaneType airplaneType;
     private String departureTime;
     private DayOfWeek day;
 
-    public Airline(String destination, int flightNumber, String airplaneType, String departureTime, DayOfWeek day) {
-        setDestination(destination);
-        setFlightNumber(flightNumber);
-        setAirplaneType(airplaneType);
-        setDepartureTime(departureTime);
-        setDay(day);
+    public Airline(String destination, int flightNumber, AirplaneType airplaneType, String departureTime, DayOfWeek day) {
+        if (destination != null && flightNumber > 0 && airplaneType != null && departureTime != null && day != null) {
+            this.destination = destination;
+            this.flightNumber = flightNumber;
+            this.airplaneType = airplaneType;
+            this.departureTime = departureTime;
+            this.day = day;
+        } else throw new IllegalArgumentException("Заданы некорректные данные");
     }
 
     public String getDestination() {
@@ -45,12 +47,12 @@ public class Airline {
         }
     }
 
-    public String getAirplaneType() {
+    public AirplaneType getAirplaneType() {
         return airplaneType;
     }
 
-    public void setAirplaneType(String airplaneType) {
-        if (!airplaneType.isEmpty()) {
+    public void setAirplaneType(AirplaneType airplaneType) {
+        if (airplaneType != null) {
             this.airplaneType = airplaneType;
         }
     }

@@ -1,9 +1,11 @@
 package programming_with_classes.agregation_and_composition.task4;
+
 /*
 Счета. Клиент может иметь несколько счетов в банке. Учитывать возможность блокировки/разблокировки счета.
 Реализовать поиск и сортировку счетов. Вычисление общей суммы по счетам. Вычисление суммы по всем счетам,
 имеющим положительный и отрицательный балансы отдельно.
-* */
+*/
+
 public class BankAccount {
     private String numOfAccount;
     private double balance;

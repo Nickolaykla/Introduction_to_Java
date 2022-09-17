@@ -1,13 +1,13 @@
 package programming_with_classes.agregation_and_composition.task1;
 
 public class Sentence {
-    private String sen = "";
+    private String sentence = "";
 
     public void addWord(Word word) {
-       sen += " " + word.getWord();
+        sentence += " " + word.getWord();
     }
 
-    public String getSen() {
-        return sen;
+    public String getSentence() {
+        return sentence;
     }
 }

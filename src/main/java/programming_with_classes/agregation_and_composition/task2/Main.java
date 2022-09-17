@@ -2,6 +2,8 @@ package programming_with_classes.agregation_and_composition.task2;
 
 public class Main {
     public static void main(String[] args) {
+        Car car = new Car();
+
         Engine audi100Engine = new Engine(2.2);
         Wheel wheels = new Wheel("Continental");
         Car audi = new Car("Audi 100", audi100Engine, wheels);
@@ -13,14 +15,14 @@ public class Main {
         System.out.println(bmw);
         System.out.println(audi);
 
-        audi.move();
-        bmw.move();
+        car.move(audi);
+        car.move(bmw);
 
-        audi.fill();
-        bmw.fill();
+        car.fill(audi);
+        car.fill(bmw);
 
-        audi.changeWheel();
-        bmw.changeWheel();
+        car.changeWheel(audi);
+        car.changeWheel(bmw);
         System.out.println(bmw.getName());
         System.out.println(audi.getName());
     }

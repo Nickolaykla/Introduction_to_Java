@@ -8,7 +8,7 @@ public class City {
         if (name != null && area > 0) {
             this.name = name;
             this.area = area;
-        }
+        } else throw new IllegalArgumentException("Некорректные данные");
     }
 
     public String getName() {

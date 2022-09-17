@@ -1,10 +1,15 @@
 package programming_with_classes.agregation_and_composition.task5;
 
+import programming_with_classes.agregation_and_composition.task5.enums.FoodType;
+import programming_with_classes.agregation_and_composition.task5.enums.Transport;
+import programming_with_classes.agregation_and_composition.task5.enums.VoucherType;
+
 /*
 Туристические путевки. Сформировать набор предложений клиенту по выбору туристической путевки различного типа
 (отдых, экскурсии, лечение, шоппинг, круиз и т.д.) для оптимального выбора. Учитывать возможность выбора
 транспорта, питания и числа дней. Реализовать выбор и сортировку путевок.
-* */
+*/
+
 public class TravelVoucher {
     private VoucherType voucherType;
     private FoodType foodType;

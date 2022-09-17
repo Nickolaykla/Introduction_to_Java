@@ -2,19 +2,24 @@ package programming_with_classes.agregation_and_composition.task1;
 
 public class Main {
     public static void main(String[] args) {
-        Word word1 = new Word("hi");
-        Sentence sentence1 = new Sentence();
-        sentence1.addWord(word1);
+        Text text = new Text("Message");
 
-        System.out.println(sentence1.getSen());
+        Word word1 = new Word("Hello");
+        Word word2 = new Word("how");
+        Word word3 = new Word("are");
+        Word word4 = new Word("you?");
 
-        Word word2 = new Word("hello");
-        Word word3 = new Word("hey");
+        Sentence sentence = new Sentence();
+        sentence.addWord(word1);
+        sentence.addWord(word2);
+        sentence.addWord(word3);
+        sentence.addWord(word4);
 
-        Text text = new Text(sentence1);
-        text.addText(word2);
-        text.addText(word3);
+        text.addToText(sentence);
+        text.addToText(word1);
 
-        text.printText();
+
+        System.out.println(text.getHeader());
+        System.out.println(text.getTxt());
     }
 }

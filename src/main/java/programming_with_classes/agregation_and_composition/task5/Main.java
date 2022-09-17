@@ -1,5 +1,9 @@
 package programming_with_classes.agregation_and_composition.task5;
 
+import programming_with_classes.agregation_and_composition.task5.enums.FoodType;
+import programming_with_classes.agregation_and_composition.task5.enums.Transport;
+import programming_with_classes.agregation_and_composition.task5.enums.VoucherType;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,9 +11,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static programming_with_classes.agregation_and_composition.task5.FoodType.*;
-import static programming_with_classes.agregation_and_composition.task5.Transport.*;
-import static programming_with_classes.agregation_and_composition.task5.VoucherType.*;
+import static programming_with_classes.agregation_and_composition.task5.enums.FoodType.*;
+import static programming_with_classes.agregation_and_composition.task5.enums.Transport.*;
+import static programming_with_classes.agregation_and_composition.task5.enums.VoucherType.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,27 +30,32 @@ public class Main {
         System.out.println("Список всех путёвок:");
         travelVoucherList.getAllVouchers();
 
-        System.out.println("Список всех имеющихся путёвок, отсортированных по ценам:");
+        System.out.println("\n" + "Список всех имеющихся путёвок, отсортированных по ценам:");
         travelVoucherList.sortByPrice().forEach(System.out::println);
 
-        System.out.println("\n" + "Список имеющихся путёвок по заданному типу путешествия:");
+        System.out.println("\n" + "Список имеющихся путёвок по заданной цели путешествия:");
         travelVoucherList.getAllVouchersByType(REST).forEach(System.out::println);
+
+        System.out.println("\n" + "Путёвки по заданному количеству дней и предложение путёвок с большим количеством дней:");
+        travelVoucherList.getAllVouchersByDays(10).forEach(System.out::println);
 
         //конструирование и последующий поиск путёвки по заданным параметрам
         TravelVoucherConstructor constructor = new TravelVoucherConstructor();
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            System.out.println("\n" + "Введите тип путешествия(REST, EXCURSION, TREATMENT, SHOPPING, CRUISE):");
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("\n" + "Введите тип путешествия(rest, excursion, treatment, shopping, cruise):");
             VoucherType voucherType = constructor.chooseVoucherType(reader.readLine());
+
             System.out.println("Введите тип питания (Без питания = ro, только завтрак = bnb, Завтрак и ужин = hb," +
                     "Завтрак, обед, ужин = fb, Всё включено = ai:");
             FoodType foodType = constructor.chooseFoodType(reader.readLine());
+
             System.out.println("Введите ориентировочную цену:");
             double cost = Double.parseDouble(reader.readLine());
 
             System.out.println("Введите количество дней:");
             int dayNum = Integer.parseInt(reader.readLine());
 
-            System.out.println("Введите тип транспорта(CAR = car, BUS = bus, AIRPLANE = airplane, TRAIN = train, SHIP = ship):");
+            System.out.println("Введите тип транспорта(car, bus, airplane, train, ship):");
             Transport transport = constructor.chooseTransport(reader.readLine());
 
             //Создаём путевку по введенным данным и пробуем подобрать из имеющихся путёвок

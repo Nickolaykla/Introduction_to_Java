@@ -1,37 +1,48 @@
 package programming_with_classes.agregation_and_composition.task2;
+
 /*
 Создать объект класса Автомобиль, использую классы Колесо, Двигатель.
 Методы: ехать, заправляться, менять колесо, вывести на консоль марку автомобиля.
-* */
+*/
+
 public class Car {
     private String name;
     private Wheel wheel;
     private Engine engine;
 
     public Car(String name, Engine engine, Wheel wheel) {
-        this.name = name;
-        this.engine = engine;
-        this.wheel = wheel;
+        if (name != null && engine != null && wheel != null) {
+            this.name = name;
+            this.engine = engine;
+            this.wheel = wheel;
+        } else throw new IllegalArgumentException("Неверно заданы параметры");
+    }
+    public Car() {
     }
 
-    public void move() {
-        System.out.println(this.getName() +" " + this.getEngine() + " начинает движение!");
+    public void move(Car car) {
+        if (car != null) {
+            System.out.println(car.getName() + " " + car.getEngine() + " начинает движение!");
+        }
     }
-
-    public void fill() {
-        System.out.println(this.getName() + " " + this.getEngine() + " заправляется.");
+    public void fill(Car car) {
+        if (car != null) {
+            System.out.println(car.getName() + " " + car.getEngine() + " заправляется.");
+        }
     }
-
-    public void changeWheel() {
-        System.out.println("В " + this.getName() + " " + this.getEngine() + " меняется колесо.");
+    public void changeWheel(Car car) {
+        if (car != null) {
+            System.out.println("В " + car.getName() + " " + car.getEngine() + " меняется колесо.");
+        }
     }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name != null) {
+            this.name = name;
+        }
     }
 
     public Wheel getWheel() {
@@ -39,7 +50,9 @@ public class Car {
     }
 
     public void setWheel(Wheel wheel) {
-        this.wheel = wheel;
+        if (wheel != null) {
+            this.wheel = wheel;
+        }
     }
 
     public Engine getEngine() {
@@ -47,7 +60,9 @@ public class Car {
     }
 
     public void setEngine(Engine engine) {
-        this.engine = engine;
+        if (engine != null) {
+            this.engine = engine;
+        }
     }
 
     @Override

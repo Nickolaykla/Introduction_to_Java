@@ -3,7 +3,8 @@ package programming_with_classes.agregation_and_composition.task3;
 /*
 Создать объект класса Государство, используя классы Область, Район, Город.
 Методы: вывести на консоль столицу, количество областей, площадь, областные центры;
-* */
+*/
+
 public class State {
     private String name;
     private City capitalName;
@@ -12,13 +13,14 @@ public class State {
     private int regionCount;
 
     public State(String name, City capitalName, double area, Region[] regions, int regionCount) {
-        this.name = name;
-        this.capitalName = capitalName;
-        this.regions = regions;
-        this.area = area;
-        this.regionCount = regionCount;
+        if (name != null && capitalName != null && area > 0 && regions != null && regionCount > 0) {
+            this.name = name;
+            this.capitalName = capitalName;
+            this.regions = regions;
+            this.area = area;
+            this.regionCount = regionCount;
+        } else throw new IllegalArgumentException("Некорректные данные");
     }
-
     public String getName() {
         return name;
     }

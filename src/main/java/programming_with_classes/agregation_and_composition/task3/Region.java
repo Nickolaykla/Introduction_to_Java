@@ -7,13 +7,15 @@ public class Region {
     private double area;
     private int districtsCount;
 
-    public Region(String name, String centerName, double area, int districtsCount) {
-        this.name = name;
-        this.centerName = centerName;
-        this.area = area;
-        this.districtsCount = districtsCount;
+    public Region(String name, String centerName, double area, District[] districts, int districtsCount) {
+        if (name != null && centerName != null && area > 0 && districts != null && districtsCount > 0) {
+            this.name = name;
+            this.centerName = centerName;
+            this.area = area;
+            this.districts = districts;
+            this.districtsCount = districtsCount;
+        } else throw new IllegalArgumentException("Некорректные данные");
     }
-
     public String getName() {
         return name;
     }
