@@ -1,6 +1,5 @@
 package basics_of_oop.task2;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +17,6 @@ public class Payment {
     }
 
     public List<Product> getProducts() {
-        System.out.println("Список товаров:");
         return products;
     }
 

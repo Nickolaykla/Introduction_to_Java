@@ -7,9 +7,11 @@ public class Treasure {
     private int id;
 
     public Treasure(String name, double price) {
-        this.id = ++treasureId;
-        this.name = name;
-        this.price = price;
+        if (name != null && price > 0) {
+            this.id = ++treasureId;
+            this.name = name;
+            this.price = price;
+        } else throw new IllegalArgumentException("Введены некорректные данные.");
     }
 
     public int getId() {
@@ -21,7 +23,9 @@ public class Treasure {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name != null) {
+            this.name = name;
+        }
     }
 
     public double getPrice() {
@@ -29,7 +33,9 @@ public class Treasure {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        if (price > 0) {
+            this.price = price;
+        }
     }
 
     @Override

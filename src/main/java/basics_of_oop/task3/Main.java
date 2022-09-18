@@ -24,7 +24,7 @@ public class Main {
         calendar.getAllHolidays().forEach(System.out::println);
 
         System.out.println("\n" + "Удаляем праздник из календаря");
-        calendar.deleteHoliday(0);
+        calendar.deleteHoliday(2);
         calendar.getAllHolidays().forEach(System.out::println);
     }
 }

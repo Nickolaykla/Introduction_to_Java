@@ -21,7 +21,9 @@ public class Main {
 
         Collections.addAll(products, product1, product2, product3, product4, product5);
 
+        System.out.println("Список товаров:");
         payment.getProducts().forEach(System.out::println);
+
         System.out.println("Выберите товары для покупки(введите id товара), для выхода введите '0'");
         List<Payment.Product> orderList = new ArrayList<>();
 

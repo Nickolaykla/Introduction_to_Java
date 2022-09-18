@@ -1,23 +1,17 @@
 package basics_of_oop.task5.sweets;
 
 public abstract class Sweet {
-      String name;
-      double weight;
+    String name;
+    double weight;
 
-   public String getName() {
-      return name;
-   }
+    public Sweet(String name) {
+        this.name = name;
+    }
 
-   public double getWeight() {
-      return weight;
-   }
+    public abstract void setWeight(double weight);
 
-   public void setWeight(double weight) {
-      this.weight = weight;
-   }
-
-   @Override
-   public String toString() {
-      return  name + ", вес=" + weight + " гр.";
-   }
+    @Override
+    public String toString() {
+        return name + " " + weight + " гр.";
+    }
 }

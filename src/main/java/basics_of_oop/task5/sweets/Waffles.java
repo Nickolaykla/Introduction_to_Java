@@ -1,9 +1,9 @@
 package basics_of_oop.task5.sweets;
 
-public class Chocolate extends Sweet {
+public class Waffles extends Sweet {
 
-    public Chocolate() {
-        super("Шоколад");
+    public Waffles() {
+        super("Вафли");
     }
 
     @Override

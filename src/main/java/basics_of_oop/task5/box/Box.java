@@ -1,20 +1,19 @@
 package basics_of_oop.task5.box;
 
-public class Box {
-    private String type;
+public enum Box {
+    CARTON("Картонная упаковка"),
+    WRAPPER_PAPER("Бумажная упаковка"),
+    GIFT_BAG("Подарочный пакет"),
+    FABRIC("Тканевая упаковка");
 
-    public String getType() {
-        return type;
-    }
+    final String name;
 
-    public void setType(String type) {
-        if (type != null) {
-            this.type = type;
-        }
+    Box(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return type;
+        return name;
     }
 }

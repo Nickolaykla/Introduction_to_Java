@@ -10,6 +10,7 @@ import java.util.*;
 Реализовать возможность просмотра сокровищ, выбора самого дорогого по стоимость сокровища и выбора сокровищ на
 заданную сумму.
 */
+
 public class DragonCave {
     private static final BufferedReader READER = new BufferedReader(new InputStreamReader(System.in));
 
@@ -38,7 +39,7 @@ public class DragonCave {
                 .max(Comparator.comparingDouble(Treasure::getPrice));
     }
 
-    // Получаем список случайных сокровищ на заданную сумму
+    // Получаем список случайных сокровищ на заданную сумму(или меньшую сумму)
     public Set<Treasure> getTreasuresByPrice(List<Treasure> list, double price) {
         Set<Treasure> treasures = new HashSet<>();
         double sum = 0;

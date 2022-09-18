@@ -74,9 +74,7 @@ public class Main {
                     showMenu();
             }
         }
-        if (DragonCave.getReader() != null) {
-            DragonCave.getReader().close();
-        }
+        DragonCave.getReader().close();
     }
 
     public static void showMenu() {

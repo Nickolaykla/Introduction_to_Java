@@ -5,10 +5,10 @@ public class SweetFactory {
         switch (type) {
             case CHOCOLATE:
                 return new Chocolate();
-            case CANDY:
-                return new Candy();
-            case MARMALADE:
-                return new Marmalade();
+            case WAFFLES:
+                return new Waffles();
+            case TURKISH_DELIGHT:
+                return new TurkishDelight();
             default: throw new IllegalArgumentException();
         }
     }

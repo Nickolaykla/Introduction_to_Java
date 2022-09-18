@@ -1,12 +1,12 @@
 package basics_of_oop.task3;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /*
 Создать класс Календарь с внутренним классом, с помощью объектов которого можно
 хранить информацию о выходных и праздничных днях.
 */
+
 public class Calendar {
 
     private List<Holiday> holidays;
@@ -21,9 +21,13 @@ public class Calendar {
     }
 
     public void addHoliday(Holiday holiday) {
-        if (!holidays.contains(holiday)) {
-            holidays.add(holiday);
+        for (Holiday hol : holidays) {
+            if(hol.equals(holiday)){
+                System.out.println("Такой праздник уже есть в календаре.");
+                return;
+            }
         }
+        holidays.add(holiday);
     }
 
     public void deleteHoliday(int id) {
@@ -37,9 +41,11 @@ public class Calendar {
         private int id;
 
         public Holiday(String name, String date) {
-            this.id = holidayID++;
-            this.name = name;
-            this.date = date;
+            if (name != null && date != null) {
+                this.id = holidayID++;
+                this.name = name;
+                this.date = date;
+            }
         }
 
         public String getName() {
@@ -47,15 +53,18 @@ public class Calendar {
         }
 
         public void setName(String name) {
-            this.name = name;
+            if (name != null) {
+                this.name = name;
+            }
         }
-
         public String getDate() {
             return date;
         }
 
         public void setDate(String date) {
-            this.date = date;
+            if (date != null) {
+                this.date = date;
+            }
         }
 
         @Override
@@ -65,6 +74,23 @@ public class Calendar {
                     ", date='" + date + '\'' +
                     ", id=" + id +
                     '}';
+        }
+
+        @Override
+        public int hashCode() {
+            int result = name.hashCode();
+            result = 31 * result + date.hashCode();
+            return  result;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (obj == null || getClass() != obj.getClass()) return false;
+
+            Holiday holiday = (Holiday) obj;
+
+            return name.equals(holiday.name) && date.equals(holiday.date);
         }
     }
 }

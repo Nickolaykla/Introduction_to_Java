@@ -10,7 +10,7 @@ import java.util.List;
 import static basics_of_oop.task5.sweets.SweetType.*;
 
 public class Gift {
-    private Box box = new Box();
+    private Box box;
     private List<Sweet> sweets = new ArrayList<>();
 
     public void addChocolate(double weight) {
@@ -18,36 +18,37 @@ public class Gift {
         if (weight > 0) {
             chocko.setWeight(weight);
             sweets.add(chocko);
-        } else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException("Ошибка при добавлении шоколада в подарок!");
     }
-    public void addMarmalade(double weight) {
-        Sweet marmal = SweetFactory.createSweet(MARMALADE);
+
+    public void addTurkishDelight(double weight) {
+        Sweet marmal = SweetFactory.createSweet(TURKISH_DELIGHT);
         if (weight > 0) {
             marmal.setWeight(weight);
             sweets.add(marmal);
-        } else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException("Ошибка при добавлении Рахат-лукума в подарок!");
     }
 
     public void addCandy(double weight) {
-        Sweet candy = SweetFactory.createSweet(CANDY);
+        Sweet candy = SweetFactory.createSweet(WAFFLES);
         if (weight > 0) {
             candy.setWeight(weight);
             sweets.add(candy);
-        } else throw new IllegalArgumentException();
+        } else throw new IllegalArgumentException("Ошибка при добавлении вафель в подарок!");
     }
-    public void chooseBoxType(String type) {
-        if (type != null) {
-            box.setType(type);
-        }
+
+    public void setBox(Box box) {
+        this.box = box;
     }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Подарок{упаковка = ").append(box);
+        sb.append("Подарок: упаковка = ").append(box)
+                .append(", Сладости: ");
         for (Sweet sweet : sweets) {
-            sb.append(", ").append(sweet);
+            sb.append(sweet).append(" ");
         }
-        sb.append("}");
         return sb.toString();
     }
 }
