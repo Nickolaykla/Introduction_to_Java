@@ -38,7 +38,9 @@ public class Gift {
     }
 
     public void setBox(Box box) {
-        this.box = box;
+        if (box != null) {
+            this.box = box;
+        }
     }
 
     @Override

@@ -1,4 +1,4 @@
-package tasks.task1.books;
+package tasks.task1.models;
 
 public enum BookType {
     BOOK("Бумажная книга"),

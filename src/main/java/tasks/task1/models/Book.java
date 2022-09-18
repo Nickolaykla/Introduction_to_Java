@@ -1,4 +1,4 @@
-package tasks.task1.books;
+package tasks.task1.models;
 
 public class Book {
     private static int bookID;
@@ -53,7 +53,7 @@ public class Book {
         if (bookName != null) {
             this.bookName = bookName;
         } else {
-            throw new IllegalArgumentException("Заданое неверное название книги.");
+            throw new IllegalArgumentException("Задано неверное название книги.");
         }
     }
 
@@ -79,6 +79,24 @@ public class Book {
         } else {
             throw new IllegalArgumentException("Задан неверный тип книги.");
         }
+    }
+
+    @Override
+    public int hashCode() {
+        int result = bookName.hashCode();
+        result = 31 * result + author.hashCode();
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj) return true;
+
+        if(obj == null || getClass() != obj.getClass()) return false;
+
+        Book book = (Book) obj;
+
+        return bookName.equals(book.bookName) && author.equals(book.author);
     }
 
     @Override

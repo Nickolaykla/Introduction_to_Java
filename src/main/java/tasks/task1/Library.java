@@ -1,36 +1,26 @@
 package tasks.task1;
 
-import tasks.task1.books.Book;
-import tasks.task1.books.BookType;
-import tasks.task1.roles.Administrator;
-import tasks.task1.roles.Logging;
-import tasks.task1.roles.User;
+import tasks.task1.models.Book;
+import tasks.task1.models.BookType;
+import tasks.task1.controllers.Logging;
+import tasks.task1.models.Email;
+import tasks.task1.models.User;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static tasks.task1.books.BookType.*;
-import static tasks.task1.roles.Logging.READER;
+import static tasks.task1.models.BookType.*;
+import static tasks.task1.controllers.Logging.READER;
+import static tasks.task1.models.Role.*;
 
-/*
-Создать консольное приложение "Учёт книг в домашней библиотеке".
-    - Система учитывает книги как в электронном, так и в бумажном варианте.
-    - Существующие роли: пользователь, администратор.
-    - Пользователь может просматривать книги в каталоге книг, осуществлять поиск книг в каталоге.
-    - Администратор может модифицировать каталог.
-    - *При добавлении описания книги в каталог оповещение о ней рассылается на e-mail всем пользователям
-    - **При просмотре каталога желательно реализовать постраничный просмотр
-    - ***Пользователь может предложить добавить книгу в библиотеку, переслав её администратору на e-mail.
-    - Каталог книг хранится в текстовом файле.
-    - Данные аутентификации пользователей хранятся в текстовом файле. Пароль не хранится в открытом виде.
-*/
 public class Library {
     public static final List<Book> BOOKS = new ArrayList<>();
-    private static String path = "/home/nickolay/IdeaProjects/Introduction_to_Java/src/main/java/tasks/task1/books/books.txt";
+    public static List<User> users = new ArrayList<>();
+    private static String path =
+            "/home/nickolay/IdeaProjects/Introduction_to_Java/src/main/java/tasks/task1/files/books.txt";
     private static User user = new User();
-    private static Administrator admin = new Administrator();
 
     static {
         Book book1 = new Book(BOOK, "Достоевский Ф.М.", "Бесы", 700);
@@ -41,6 +31,13 @@ public class Library {
 
         Collections.addAll(BOOKS, book1, book2, book3, book4, book5);
         BOOKS.forEach(Library::addBooksToFile);
+
+        User user1 = new User("Vova", new Email("vova@gmail.com"), "1", DEFAULT_USER);
+        User user2 = new User("Inokentiy", new Email("inok@gmail.com"), "12", ADMIN);
+        User user3 = new User("Nataly", new Email("nataska@mail.ru"), "123", DEFAULT_USER);
+
+        Collections.addAll(users, user1, user2, user3);
+        users.forEach(Logging::addUserToFile);
     }
 
     public static void addBooksToFile(Book book) {
@@ -52,7 +49,7 @@ public class Library {
     }
 
     public static void refreshBooksInLibrary() {
-        try(FileWriter writer = new FileWriter(path)) {
+        try (FileWriter writer = new FileWriter(path)) {
             for (Book book : BOOKS) {
                 writer.write(book + "\n");
             }
@@ -76,14 +73,13 @@ public class Library {
                         break;
                     case 1:
                         Logging.register();
-                        userMenu();
                         break;
                     case 2:
                         Logging.logIn();
-                        userMenu();
                         break;
                     default:
-                        throw new IllegalArgumentException("Что-то пошло не так.");
+                        System.out.println("Введен неверный параметр");
+                        break;
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -96,42 +92,20 @@ public class Library {
         System.out.println("Для просмотра книг нажмите '1'");
         System.out.println("Для поиска книги нажмите '2'");
         System.out.println("Для предложения книги нажмите '3'");
-        int num = -1;
-        while (num != 0) {
-            try {
-                num = Integer.parseInt(READER.readLine());
-                switch (num) {
-                    case 0:
-                        startMenu();
-                        break;
-                    case 1:
-                        user.viewBooks();
-                        break;
-                    case 2:
-                        String name = READER.readLine();
-                        System.out.println(user.findBooks(name));
-                        break;
-                    case 3:
-                        System.out.println("Введите автора, название и количество страниц:");
-                        String auth = READER.readLine();
-                        String nam = READER.readLine();
-                        user.offerBook(new Book(auth, nam));
-                    default: throw new IllegalArgumentException();
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        System.out.println();
+        userActions();
     }
 
     public static void adminMenu() {
         System.out.println("Для выхода нажмите '0'");
         System.out.println("Для просмотра книг нажмите '1'");
         System.out.println("Для поиска книги нажмите '2'");
-        System.out.println("Для добавления книги нажмите '3'");
-        System.out.println("Для удаления книги нажмите '4'");
+        System.out.println("Для предложения книги нажмите '3'");
+        System.out.println("Для добавления книги нажмите '4'");
+        System.out.println("Для удаления книги нажмите '5'");
+        userActions();
+    }
 
+    public static void userActions() {
         int num = -1;
         while (num != 0) {
             try {
@@ -141,12 +115,50 @@ public class Library {
                         startMenu();
                         break;
                     case 1:
-                        user.viewBooks();
+                        user.getAbility().viewBooks();
+                        break;
                     case 2:
                         String name = READER.readLine();
-                        System.out.println(user.findBooks(name));
+                        System.out.println(user.getAbility().findBooks(name));
                         break;
                     case 3:
+                        System.out.println("Введите автора, название и количество страниц:");
+                        String auth = READER.readLine();
+                        String nam = READER.readLine();
+                        user.getAbility().offerBook(new Book(auth, nam));
+                        break;
+                    default:
+                        throw new IllegalArgumentException();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static void adminActions() {
+        int num = -1;
+        while (num != 0) {
+            try {
+                num = Integer.parseInt(READER.readLine());
+                switch (num) {
+                    case 0:
+                        startMenu();
+                        break;
+                    case 1:
+                        user.getAbility().viewBooks();
+                        break;
+                    case 2:
+                        String name = READER.readLine();
+                        System.out.println(user.getAbility().findBooks(name));
+                        break;
+                    case 3:
+                        System.out.println("Введите автора, название и количество страниц:");
+                        String auth = READER.readLine();
+                        String nam = READER.readLine();
+                        user.getAbility().offerBook(new Book(auth, nam));
+                        break;
+                    case 4:
                         System.out.println("Введите тип книги(E_BOOK, BOOK):");
                         String type = READER.readLine();
                         System.out.println("Введите автора книги:");
@@ -156,14 +168,17 @@ public class Library {
                         System.out.println("Введите количество страниц:");
                         int pages = Integer.parseInt(READER.readLine());
                         Book book = new Book(BookType.valueOf(type), author, bookName, pages);
-                        admin.addBook(book);
-                        admin.notifyUsers(book);
-                    case 4:
+                        user.getAbility().addBook(book);
+                        user.getAbility().notifyUsers(book);
+                        break;
+                    case 5:
                         int id = Integer.parseInt(READER.readLine());
-                        admin.deleteBook(id);
+                        user.getAbility().deleteBook(id);
                         System.out.println("Книга была убрана из библиотеки:");
-                        admin.notifyUsers(BOOKS.get(id));
-                    default: throw new IllegalArgumentException();
+                        user.getAbility().notifyUsers(BOOKS.get(id));
+                        break;
+                    default:
+                        throw new IllegalArgumentException();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
