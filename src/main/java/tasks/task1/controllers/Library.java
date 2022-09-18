@@ -18,7 +18,7 @@ import static tasks.task1.models.Role.*;
 public class Library {
     public static final List<Book> BOOKS = new ArrayList<>();
     public static List<User> users = new ArrayList<>();
-    private static User user = new User();
+    private static final User user = new User();
 
     static {
         Book book1 = new Book(BOOK, "Достоевский Ф.М.", "Бесы", 700);
@@ -80,9 +80,8 @@ public class Library {
         System.out.println("Для выхода нажмите '0'");
         System.out.println("Для просмотра книг нажмите '1'");
         System.out.println("Для поиска книги нажмите '2'");
-        System.out.println("Для предложения книги нажмите '3'");
-        System.out.println("Для добавления книги нажмите '4'");
-        System.out.println("Для удаления книги нажмите '5'");
+        System.out.println("Для добавления книги нажмите '3'");
+        System.out.println("Для удаления книги нажмите '4'");
         adminActions();
     }
 
@@ -103,12 +102,7 @@ public class Library {
                         System.out.println(user.getAbility().findBooks(name));
                         break;
                     case 3:
-                        System.out.println("Введите автора и название книги:");
-                        String auth = READER.readLine();
-                        String nam = READER.readLine();
-                        Book book = new Book();
-                        book.setAuthor(auth);
-                        book.setBookName(nam);
+                        Book book = bookAddOffer();
                         user.getAbility().offerBook(book);
                         break;
                     default:
@@ -139,40 +133,43 @@ public class Library {
                         System.out.println(user.getAbility().findBooks(name));
                         break;
                     case 3:
-                        System.out.println("Введите автора, название и количество страниц:");
-                        String auth = READER.readLine();
-                        String nam = READER.readLine();
-                        user.getAbility().offerBook(new Book(auth, nam));
+                        Book book1 = bookAddOffer();
+                        user.getAbility().addBook(book1);
+                        user.getAbility().notifyUsers(book1, "Добавлена");
                         break;
                     case 4:
-                        System.out.println("Введите тип книги(E_BOOK, BOOK):");
-                        String type = READER.readLine();
-                        System.out.println("Введите автора книги:");
-                        String author = READER.readLine();
-                        System.out.println("Введите название книги:");
-                        String bookName = READER.readLine();
-                        System.out.println("Введите количество страниц:");
-                        int pages = Integer.parseInt(READER.readLine());
-                        Book book = new Book();
-                        book.setType(BookType.valueOf(type));
-                        book.setAuthor(author);
-                        book.setBookName(bookName);
-                        book.setPages(pages);
-                        user.getAbility().addBook(book);
-                        user.getAbility().notifyUsers(book, "Добавлена");
-                        break;
-                    case 5:
                         int id = Integer.parseInt(READER.readLine());
                         user.getAbility().deleteBook(id);
                         System.out.println("Книга была убрана из библиотеки:");
                         user.getAbility().notifyUsers(BOOKS.get(id), "Удалена");
                         break;
                     default:
-                        throw new IllegalArgumentException();
+                        System.out.println("Введен неверный параметр");
+                        adminMenu();
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+    private static Book bookAddOffer() {
+        try {
+            System.out.println("Введите тип книги(E_BOOK, BOOK):");
+            String type = READER.readLine();
+            System.out.println("Введите автора книги:");
+            String author = READER.readLine();
+            System.out.println("Введите название книги:");
+            String bookName = READER.readLine();
+            System.out.println("Введите количество страниц:");
+            int pages = Integer.parseInt(READER.readLine());
+            Book book = new Book();
+            book.setType(BookType.valueOf(type));
+            book.setAuthor(author);
+            book.setBookName(bookName);
+            book.setPages(pages);
+            return book;
+        } catch (IOException e) {
+            throw new RuntimeException();
         }
     }
 }

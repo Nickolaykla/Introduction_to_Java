@@ -24,6 +24,7 @@ public class User {
             this.name = name;
             this.eMail = eMail;
             this.password = Logging.encryptPassword(password);
+            this.role = Role.DEFAULT_USER;
         } else throw new IllegalArgumentException("Заданы некорректные данные");
     }
 

@@ -1,0 +1,18 @@
+User{name='Vova', eMail='tasks.task1.models.Email@4ee285c6', password='ￄￊB8ﾠﾹ#ﾂￌPﾚouﾄﾛ'}
+User{name='Inokentiy', eMail='tasks.task1.models.Email@621be5d1', password='ￂ
+ￔￗo￩wYﾪ'ﾠ￉ﾛ￿g'}
+User{name='Nataly', eMail='tasks.task1.models.Email@573fd745', password=' ,ﾹbﾬY[ﾖK-#Kp'}
+User{name='kolia', eMail='tasks.task1.models.Email@15327b79', password=' ,ﾹbﾬY[ﾖK-#Kp'}
+User{name='Vova', eMail='tasks.task1.models.Email@4ee285c6', password='ￄￊB8ﾠﾹ#ﾂￌPﾚouﾄﾛ'}
+User{name='Inokentiy', eMail='tasks.task1.models.Email@621be5d1', password='ￂ
+ￔￗo￩wYﾪ'ﾠ￉ﾛ￿g'}
+User{name='Nataly', eMail='tasks.task1.models.Email@573fd745', password=' ,ﾹbﾬY[ﾖK-#Kp'}
+User{name='kolya', eMail='tasks.task1.models.Email@15327b79', password='ﾵﾜg﾿jGXB￷fpￎﾺ'}
+User{name='Vova', eMail='tasks.task1.models.Email@4ee285c6', password='ￄￊB8ﾠﾹ#ﾂￌPﾚouﾄﾛ'}
+User{name='Inokentiy', eMail='tasks.task1.models.Email@621be5d1', password='ￂ
+ￔￗo￩wYﾪ'ﾠ￉ﾛ￿g'}
+User{name='Nataly', eMail='tasks.task1.models.Email@573fd745', password=' ,ﾹbﾬY[ﾖK-#Kp'}
+User{name='Vova', eMail='tasks.task1.models.Email@4ee285c6', password='ￄￊB8ﾠﾹ#ﾂￌPﾚouﾄﾛ'}
+User{name='Inokentiy', eMail='tasks.task1.models.Email@621be5d1', password='ￂ
+ￔￗo￩wYﾪ'ﾠ￉ﾛ￿g'}
+User{name='Nataly', eMail='tasks.task1.models.Email@573fd745', password=' ,ﾹbﾬY[ﾖK-#Kp'}

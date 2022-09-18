@@ -20,15 +20,6 @@ public class Book {
         }
     }
 
-    public Book(String author, String bookName) {
-        if (author != null && bookName != null) {
-            this.author = author;
-            this.bookName = bookName;
-        } else {
-            throw new IllegalArgumentException("Заданы некорректные данные");
-        }
-    }
-
     public Book() {
     }
 
