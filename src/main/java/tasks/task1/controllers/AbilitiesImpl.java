@@ -1,5 +1,6 @@
 package tasks.task1.controllers;
 
+import tasks.task1.files.FileWorker;
 import tasks.task1.models.Book;
 import tasks.task1.models.Role;
 import tasks.task1.models.User;
@@ -7,7 +8,9 @@ import tasks.task1.models.User;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static tasks.task1.Library.*;
+import static tasks.task1.controllers.Library.*;
+import static tasks.task1.files.FileWorker.addBooksToFile;
+import static tasks.task1.files.FileWorker.refreshBooksInLibrary;
 
 public class AbilitiesImpl implements AllAbilities {
     @Override
@@ -23,7 +26,7 @@ public class AbilitiesImpl implements AllAbilities {
                 .orElse(null);
     }
 
-    // отправляем администраторам уведомление с просьбой добавить книгу
+    // предлагаем книгу
     @Override
     public void offerBook(Book book) {
         List<User> admins = getUsersByRole(Role.ADMIN);
@@ -31,6 +34,7 @@ public class AbilitiesImpl implements AllAbilities {
             user.geteMail().getMessages().add(user.getName() + " Предлагаю добавить в библиотеку следующую книгу + \n" +
                     book.toString());
         }
+        FileWorker.addAdminEmailToFile();
     }
 
     @Override
@@ -56,11 +60,13 @@ public class AbilitiesImpl implements AllAbilities {
 
     // отправляем пользователям уведомление на e-mail и новой книге
     @Override
-    public void notifyUsers(Book book) {
+    public void notifyUsers(Book book, String text) {
         List<User> usersToNotify = getUsersByRole(Role.DEFAULT_USER);
         for (User user : usersToNotify) {
-            user.geteMail().getMessages().add(user.getName() + "Добавлена новая книга:" + "\n" + book.toString());
+            user.geteMail().getMessages().add("Уважаемый " + user.getName() + text + " книга:"
+                    + "\n" + book.toString());
         }
+        FileWorker.addUserEmailToFile();
     }
 
     // получаем список пользователей в зависимости от роли

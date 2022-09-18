@@ -69,7 +69,7 @@ public class User {
     @Override
     public int hashCode() {
         int result = name.hashCode();
-        result = 31 * result + eMail.hashCode();
+        result = 31 * result + password.hashCode();
         return result;
     }
 
@@ -81,7 +81,7 @@ public class User {
 
         User user = (User) obj;
 
-        return name.equals(user.name) && eMail.equals(user.eMail);
+        return name.equals(user.name) && password.equals(user.password);
     }
 
     @Override

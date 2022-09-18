@@ -8,5 +8,5 @@ public interface AllAbilities {
     void offerBook(Book book);
     void addBook(Book book);
     void deleteBook(int id);
-    void notifyUsers(Book book);
+    void notifyUsers(Book book, String text);
 }

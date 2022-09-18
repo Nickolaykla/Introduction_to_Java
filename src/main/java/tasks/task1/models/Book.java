@@ -29,6 +29,9 @@ public class Book {
         }
     }
 
+    public Book() {
+    }
+
     public int getId() {
         return id;
     }

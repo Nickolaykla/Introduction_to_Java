@@ -1,18 +1,17 @@
 package tasks.task1.controllers;
 
-import tasks.task1.Library;
+import tasks.task1.files.FileWorker;
 import tasks.task1.models.Email;
 import tasks.task1.models.Role;
 import tasks.task1.models.User;
 
 import java.io.BufferedReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import static tasks.task1.Library.users;
+import static tasks.task1.controllers.Library.users;
 
 public class Logging {
     public static final BufferedReader READER = new BufferedReader(new InputStreamReader(System.in));
@@ -64,18 +63,9 @@ public class Logging {
             String password = READER.readLine();
             User user = new User(name, eMail, password);
             users.add(user);
-            addUserToFile(user);
+            FileWorker.addUserToFile(user);
             Library.userMenu();
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static void addUserToFile(User user) {
-        String path = "/home/nickolay/IdeaProjects/Introduction_to_Java/src/main/java/tasks/task1/files/users.txt";
-        try (FileWriter writer = new FileWriter(path, true)) {
-            writer.write(user + "\n");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
