@@ -1,6 +1,6 @@
 package tasks.task1.controllers;
 
-import tasks.task1.Library;
+import tasks.task1.LibraryMenu;
 import tasks.task1.models.Email;
 import tasks.task1.models.Role;
 import tasks.task1.models.User;
@@ -11,7 +11,8 @@ import java.io.InputStreamReader;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import static tasks.task1.Library.users;
+import static tasks.task1.LibraryMenu.users;
+import static tasks.task1.controllers.FileWorker.*;
 
 public class Logging {
     public static final BufferedReader READER = new BufferedReader(new InputStreamReader(System.in));
@@ -24,17 +25,17 @@ public class Logging {
             Email eMail = new Email(READER.readLine());
             System.out.println("Введите пароль:");
             String password = READER.readLine();
-            User user = new User(name, eMail, password);
+            User user = new User(name, eMail, encryptPassword(password));
             User foundUser = findUser(user);
             if (foundUser != null) {
                 if (isAdmin(foundUser)) {
-                    Library.adminMenu();
+                    LibraryMenu.adminMenu();
                 } else {
-                    Library.userMenu();
+                    LibraryMenu.userMenu();
                 }
             } else {
                 System.out.println("Неверно задан логин или пароль");
-                Library.startMenu();
+                LibraryMenu.startMenu();
             }
 
         } catch (IOException e) {
@@ -62,8 +63,8 @@ public class Logging {
             System.out.println("Введите пароль:");
             String password = READER.readLine();
             User user = new User(name, eMail, encryptPassword(password));
-            FileWorker.addUserToFile(user);
-            Library.userMenu();
+            FileWorker.addUserToFile(user, USERS_TXT);
+            LibraryMenu.userMenu();
 
         } catch (IOException e) {
             throw new RuntimeException(e);

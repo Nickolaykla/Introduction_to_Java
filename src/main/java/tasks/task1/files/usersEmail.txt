@@ -1,4 +1,36 @@
-[VovaДобавлена новая книга:
-Book{id=5 type=Бумажная книга, author='Толстой', bookName='Воскресение', pages=600}]
-[NatalyДобавлена новая книга:
-Book{id=5 type=Бумажная книга, author='Толстой', bookName='Воскресение', pages=600}]
+Уважаемый Vova добавлена книга:
+Book{type=E_BOOK, author='Достоевский', bookName='Бесы', pages=700}
+
+Уважаемый Nataly добавлена книга:
+Book{type=E_BOOK, author='Достоевский', bookName='Бесы', pages=700}
+
+Уважаемый Nickolay добавлена книга:
+Book{type=E_BOOK, author='Достоевский', bookName='Бесы', pages=700}
+
+Уважаемый Vova добавлена книга:
+Book{type=BOOK, author='Достоевский', bookName='Братья Карамазовы', pages=950}
+
+Уважаемый Nataly добавлена книга:
+Book{type=BOOK, author='Достоевский', bookName='Братья Карамазовы', pages=950}
+
+Уважаемый Nickolay добавлена книга:
+Book{type=BOOK, author='Достоевский', bookName='Братья Карамазовы', pages=950}
+
+Уважаемый Vova удалена книга:
+Book{type=E_BOOK, author='Достоевский', bookName='Бесы', pages=700}
+
+Уважаемый Nataly удалена книга:
+Book{type=E_BOOK, author='Достоевский', bookName='Бесы', pages=700}
+
+Уважаемый Nickolay удалена книга:
+Book{type=E_BOOK, author='Достоевский', bookName='Бесы', pages=700}
+
+Уважаемый Vova добавлена книга:
+Book{type=BOOK, author='Чехов', bookName='Человек в футляре', pages=567}
+
+Уважаемый Nataly добавлена книга:
+Book{type=BOOK, author='Чехов', bookName='Человек в футляре', pages=567}
+
+Уважаемый Nickolay добавлена книга:
+Book{type=BOOK, author='Чехов', bookName='Человек в футляре', pages=567}
+

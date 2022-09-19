@@ -7,6 +7,6 @@ public interface AllAbilities {
     Book findBooks(String name);
     void offerBook(Book book);
     void addBook(Book book);
-    void deleteBook(int id);
+    void deleteBook(String author, String name);
     void notifyUsers(Book book, String text);
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 import static tasks.task1.controllers.Logging.READER;
 
-public class Library {
+public class LibraryMenu {
     public static final List<Book> BOOKS = new ArrayList<>();
     public static List<User> users = new ArrayList<>();
     private static final User user = new User();
@@ -27,7 +27,6 @@ public class Library {
                 num = Integer.parseInt(READER.readLine());
                 switch (num) {
                     case 0:
-                        System.out.println("Всего хорошего!");
                         break;
                     case 1:
                         Logging.register();
@@ -75,6 +74,7 @@ public class Library {
                         user.getAbility().viewBooks();
                         break;
                     case 2:
+                        System.out.println("Введите название книги:");
                         String name = READER.readLine();
                         System.out.println(user.getAbility().findBooks(name));
                         break;
@@ -112,13 +112,15 @@ public class Library {
                     case 3:
                         Book book1 = bookAddOffer();
                         user.getAbility().addBook(book1);
-                        user.getAbility().notifyUsers(book1, "Добавлена");
+                        user.getAbility().notifyUsers(book1, " добавлена");
                         break;
                     case 4:
-                        int id = Integer.parseInt(READER.readLine());
-                        user.getAbility().deleteBook(id);
-                        System.out.println("Книга была убрана из библиотеки:");
-                        user.getAbility().notifyUsers(BOOKS.get(id), "Удалена");
+                        user.getAbility().viewBooks();
+                        System.out.println("Введите автора книги для удаления:");
+                        String author = READER.readLine();
+                        System.out.println("Введите название книги для удаления:");
+                        String nameOfBook = READER.readLine();
+                        user.getAbility().deleteBook(author, nameOfBook);
                         break;
                     default:
                         System.out.println("Введен неверный параметр");

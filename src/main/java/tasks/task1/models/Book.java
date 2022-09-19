@@ -1,8 +1,6 @@
 package tasks.task1.models;
 
 public class Book {
-    private static int bookID;
-    private int id;
     private BookType type;
     private String author;
     private String bookName;
@@ -10,7 +8,6 @@ public class Book {
 
     public Book(BookType type, String author, String bookName, int pages) {
         if (type != null && author != null && bookName != null && pages > 0) {
-            this.id = bookID++;
             this.type = type;
             this.author = author;
             this.bookName = bookName;
@@ -23,15 +20,6 @@ public class Book {
     public Book() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        if (id >= 0) {
-            this.id = id;
-        }
-    }
     public String getAuthor() {
         return author;
     }
@@ -100,8 +88,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ' ' +
-                "type=" + type +
+        return "Book{type=" + type +
                 ", author='" + author + '\'' +
                 ", bookName='" + bookName + '\'' +
                 ", pages=" + pages +

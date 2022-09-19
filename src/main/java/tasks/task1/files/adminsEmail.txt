@@ -1,4 +1,3 @@
-[Inokentiy Предлагаю добавить в библиотеку следующую книгу + 
-Book{id=0 type=null, author='Bob', bookName='ASD', pages=0}]
-[Inokentiy Предлагаю добавить в библиотеку следующую книгу + 
-Book{id=0 type=Электронная книга, author='Leo', bookName='WOW', pages=500}]
+
+[Inokentiy, предлагаю добавить в библиотеку следующую книгу: 
+Book{type=BOOK, author='Чехов', bookName='Человек в футляре', pages=567}]

@@ -1,3 +1,4 @@
 Vova, vova@gmail.com, c4ca4238a0b923820dcc509a6f75849b, DEFAULT_USER
 Inokentiy, inok@gmail.com, c20ad4d76fe97759aa27a0c99bff6710, ADMIN
 Nataly, nataska@mail.ru, 202cb962ac59075b964b07152d234b70, DEFAULT_USER
+Nickolay, nickolay@mail.ru, 202cb962ac59075b964b07152d234b70, DEFAULT_USER
