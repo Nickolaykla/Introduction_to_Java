@@ -1,43 +1,20 @@
-package tasks.task1.controllers;
+package tasks.task1;
 
-import tasks.task1.files.FileWorker;
+import tasks.task1.controllers.Logging;
 import tasks.task1.models.Book;
 import tasks.task1.models.BookType;
-import tasks.task1.models.Email;
 import tasks.task1.models.User;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import static tasks.task1.models.BookType.*;
 import static tasks.task1.controllers.Logging.READER;
-import static tasks.task1.models.Role.*;
 
 public class Library {
     public static final List<Book> BOOKS = new ArrayList<>();
     public static List<User> users = new ArrayList<>();
     private static final User user = new User();
-
-    static {
-        Book book1 = new Book(BOOK, "Достоевский Ф.М.", "Бесы", 700);
-        Book book2 = new Book(E_BOOK, "Достоевский Ф.М.", "Братья Карамазовы", 950);
-        Book book3 = new Book(BOOK, "Толстой Л.Н.", "Воскресение", 400);
-        Book book4 = new Book(BOOK, "Толстой Л.Н.", "Война и мир", 1400);
-        Book book5 = new Book(E_BOOK, "Гоголь Н.В.", "Мёртвые души", 500);
-
-        Collections.addAll(BOOKS, book1, book2, book3, book4, book5);
-        BOOKS.forEach(FileWorker::addBooksToFile);
-
-        User user1 = new User("Vova", new Email("vova@gmail.com"), "1", DEFAULT_USER);
-        User user2 = new User("Inokentiy", new Email("inok@gmail.com"), "12", ADMIN);
-        User user3 = new User("Nataly", new Email("nataska@mail.ru"), "123", DEFAULT_USER);
-
-        Collections.addAll(users, user1, user2, user3);
-        users.forEach(FileWorker::addUserToFile);
-    }
-
 
     public static void startMenu() {
         System.out.println("Для выхода нажмите '0'");
@@ -152,6 +129,7 @@ public class Library {
             }
         }
     }
+
     private static Book bookAddOffer() {
         try {
             System.out.println("Введите тип книги(E_BOOK, BOOK):");
@@ -162,12 +140,7 @@ public class Library {
             String bookName = READER.readLine();
             System.out.println("Введите количество страниц:");
             int pages = Integer.parseInt(READER.readLine());
-            Book book = new Book();
-            book.setType(BookType.valueOf(type));
-            book.setAuthor(author);
-            book.setBookName(bookName);
-            book.setPages(pages);
-            return book;
+            return new Book(BookType.valueOf(type), author, bookName, pages);
         } catch (IOException e) {
             throw new RuntimeException();
         }

@@ -89,8 +89,9 @@ public class User {
     public String toString() {
         return "User{" +
                 "name='" + name + '\'' +
-                ", eMail='" + eMail + '\'' +
+                ", eMail='" + eMail.getEmail() + '\'' +
                 ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

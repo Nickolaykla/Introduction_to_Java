@@ -1,6 +1,6 @@
 package tasks.task1.controllers;
 
-import tasks.task1.files.FileWorker;
+import tasks.task1.Library;
 import tasks.task1.models.Email;
 import tasks.task1.models.Role;
 import tasks.task1.models.User;
@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import static tasks.task1.controllers.Library.users;
+import static tasks.task1.Library.users;
 
 public class Logging {
     public static final BufferedReader READER = new BufferedReader(new InputStreamReader(System.in));
@@ -61,8 +61,7 @@ public class Logging {
             Email eMail = new Email(READER.readLine());
             System.out.println("Введите пароль:");
             String password = READER.readLine();
-            User user = new User(name, eMail, password);
-            users.add(user);
+            User user = new User(name, eMail, encryptPassword(password));
             FileWorker.addUserToFile(user);
             Library.userMenu();
 
@@ -77,7 +76,7 @@ public class Logging {
             StringBuilder sb = new StringBuilder();
             byte[] bytes = passw.digest(password.getBytes());
             for (byte b : bytes) {
-                sb.append((char) b);
+                sb.append(String.format("%02x", b));
             }
             return sb.toString();
         } catch (NoSuchAlgorithmException e) {

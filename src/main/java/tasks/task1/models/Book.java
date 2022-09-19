@@ -27,6 +27,11 @@ public class Book {
         return id;
     }
 
+    public void setId(int id) {
+        if (id >= 0) {
+            this.id = id;
+        }
+    }
     public String getAuthor() {
         return author;
     }

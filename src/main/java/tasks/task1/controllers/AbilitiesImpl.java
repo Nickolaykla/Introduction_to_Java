@@ -1,6 +1,5 @@
 package tasks.task1.controllers;
 
-import tasks.task1.files.FileWorker;
 import tasks.task1.models.Book;
 import tasks.task1.models.Role;
 import tasks.task1.models.User;
@@ -8,9 +7,9 @@ import tasks.task1.models.User;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static tasks.task1.controllers.Library.*;
-import static tasks.task1.files.FileWorker.addBooksToFile;
-import static tasks.task1.files.FileWorker.refreshBooksInLibrary;
+import static tasks.task1.Library.*;
+import static tasks.task1.controllers.FileWorker.addBooksToFile;
+import static tasks.task1.controllers.FileWorker.refreshBooksInLibrary;
 
 public class AbilitiesImpl implements AllAbilities {
     @Override
