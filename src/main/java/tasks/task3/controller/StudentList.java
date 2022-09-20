@@ -29,10 +29,6 @@ public class StudentList {
         return getFromXml().students;
     }
 
-    public StudentList getInstance() {
-        return getFromXml();
-    }
-
     public static StudentList getFromXml() {
         try (FileReader fr = new FileReader(PATH)) {
             JAXBContext context = JAXBContext.newInstance(StudentList.class);
@@ -43,8 +39,9 @@ public class StudentList {
         }
     }
 
+    // добавляем студента в архив
     public static void addToXml(Student student) {
-        if(!studentList.students.isEmpty()) {
+        if(!getFromXml().students.isEmpty()) {
             studentList = getFromXml();
             studentList.add(student);
         } else studentList.add(student);
@@ -60,19 +57,7 @@ public class StudentList {
         }
     }
 
-    public List<Student> getStudentByName(String name) {
-        List<Student> result;
-        if (name != null) {
-            result = studentList.getAllStudents().stream()
-                    .filter(student -> student.getName().contains(name))
-                    .collect(Collectors.toList());
-            if (result.isEmpty()) {
-                System.out.println("Таких студентов нет");
-            }
-        } else throw new IllegalArgumentException("Задано неверное имя.");
-        return result;
-    }
-
+    // получаем студентов по заданному курсу
     public List<Student> getStudentsByCourse(int course) {
         List<Student> result;
         if (course >= 1 && course <= 5) {
@@ -86,6 +71,11 @@ public class StudentList {
         return result;
     }
 
+    public void deleteStudent(int id) {
+        studentList.getAllStudents().remove(id);
+    }
+
+    //получаем студентов по заданной группе
     public List<Student> getStudentsByGroup(int group) {
         List<Student> result;
         if (group > 0) {
@@ -99,6 +89,7 @@ public class StudentList {
         return result;
     }
 
+    // получаем студентов по заданному факультету
     public List<Student> getStudentsByFaculty(Faculty faculty) {
         List<Student> result;
         if (faculty != null) {
@@ -112,19 +103,14 @@ public class StudentList {
         return result;
     }
 
-    public void addStudent(String name, int course, int group, Faculty faculty) {
-        if (name != null && course >= 1 && course <= 5 && group > 0 && faculty != null) {
-//            studentList.getAllStudents().add(new Student(name, course, group, faculty));
-        } else {
-            throw new IllegalArgumentException("Заданы некорректные данные при добавлении студента.");
-        }
-    }
+    // перевод результата в строковый вид
     public String response(List<Student> list) {
         StringBuilder sb = new StringBuilder();
         list.forEach(student -> sb.append(student).append("\n"));
         return sb.toString();
     }
 
+    // изменение данных студента
     public void changeStudentData(Student student, String name, int course, int group, Faculty faculty) {
         student.setName(name);
         student.setCourse(course);

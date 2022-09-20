@@ -30,7 +30,8 @@ public class Server {
             String result = "";
             while (serverSocket.isConnected()) {
                 request = in.readLine();
-                System.out.println(request);
+                if(request.equalsIgnoreCase("exit")) break;
+
                 result = doResponse(request);
                 out.write(result + "\n");
                 out.flush();
@@ -45,7 +46,8 @@ public class Server {
         String result = "";
         switch (param) {
             case "1":
-                result = studentList.getInstance().toString();
+                List<Student> res1 = studentList.getAllStudents();
+                result = studentList.response(res1);
                 break;
             case "2":
                 out.write("Введите факультет(ECONOMICS, ENGINEER, BIOLOGY, PHYSICS:" + "\n");
@@ -60,7 +62,8 @@ public class Server {
                 result = studentList.response(res3);
                 break;
             case "4":
-                StudentList.addToXml(studentInit());
+                Student newStud = studentInit();
+                StudentList.addToXml(newStud);
                 break;
             case "5":
                 out.write("Введите id студента:");
@@ -82,14 +85,29 @@ public class Server {
                 studentList.changeStudentData(studentToChange, name, course, group, faculty);
                 break;
             case "6":
+                out.write("Введите id студента для удаления дела:" + "\n");
+                out.flush();
+                int id = Integer.parseInt(in.readLine());
+                studentList.deleteStudent(id);
+                break;
+            case "7":
+                out.write("Введите номер группы для получения дел студентов:" + "\n");
+                out.flush();
+                int groupNum = Integer.parseInt(in.readLine());
+                List<Student> res7 = studentList.getStudentsByGroup(groupNum);
+                result = studentList.response(res7);
+                break;
             default:
+                out.write("Задан неверный запрос" + "\n");
+                out.flush();
                 break;
         }
         return result;
     }
+
     private static Student studentInit() throws IOException {
         int size = studentList.getAllStudents().size();
-        int id = studentList.getAllStudents().get(size-1).getId();
+        int id = studentList.getAllStudents().get(size - 1).getId();
         out.write("Введите фамилию и имя студента:" + "\n");
         out.flush();
         String name = in.readLine();

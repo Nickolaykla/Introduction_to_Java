@@ -28,4 +28,11 @@
         <group>13</group>
         <faculty>PHYSICS</faculty>
     </student>
+    <student>
+        <id>5</id>
+        <name>Наталья Иванова</name>
+        <course>5</course>
+        <group>13</group>
+        <faculty>PHYSICS</faculty>
+    </student>
 </students>

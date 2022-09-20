@@ -19,6 +19,8 @@ public class Client {
 
                 request = reader.readLine();
 
+                if(request.equalsIgnoreCase("exit")) break;
+
                 out.write(request + "\n");
                 out.flush();
 
@@ -39,5 +41,6 @@ public class Client {
         System.out.println("Нажмите '4' для добавления нового дела в архив");
         System.out.println("Нажмите '5' для изменения дела.");
         System.out.println("Нажмите '6' для удаления дела.");
+        System.out.println("Нажмите '7' для поиска студентов по группе.");
     }
 }
