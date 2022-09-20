@@ -3,23 +3,34 @@ package tasks.task3.model;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType(propOrder = {"name", "course", "group", "faculty"})
+@XmlRootElement(name = "student")
+@XmlType(propOrder = {"id", "name", "course", "group", "faculty"})
 public class Student {
+    private int id;
     private String name;
     private int course;
     private int group;
     private Faculty faculty;
 
-    public Student(String name, int course, int group, Faculty faculty) {
-        if (name != null && group > 0 && course >= 1 && course <= 5 && faculty != null) {
+    public Student(int id, String name, int course, int group, Faculty faculty) {
+        if (id > 0 && name != null && group > 0 && course >= 1 && course <= 5 && faculty != null) {
             this.name = name;
             this.course = course;
             this.group = group;
             this.faculty = faculty;
+            this.id = id;
         } else throw new IllegalArgumentException("Введены некорректные данные");
     }
 
     public Student() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -65,7 +76,8 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", course=" + course +
                 ", group=" + group +
                 ", faculty=" + faculty +

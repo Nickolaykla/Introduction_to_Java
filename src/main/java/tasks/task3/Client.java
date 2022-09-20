@@ -1,12 +1,7 @@
 package tasks.task3;
 
-import tasks.task3.model.Student;
-
 import java.io.*;
 import java.net.Socket;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Client {
 
@@ -19,17 +14,18 @@ public class Client {
 
             showMenu();
 
-            while (true) {
-                String word = reader.readLine();
-                if (word.equals("exit")) break;
-                out.write(reader.readLine() + "\n");
+            String request = "";
+            while (clientSocket.isConnected()) {
+
+                request = reader.readLine();
+
+                out.write(request + "\n");
                 out.flush();
 
-                Stream<String> stream = in.lines().takeWhile(Objects::nonNull);
-                stream.forEach(System.out::println);
-
+                do {
+                    System.out.println(in.readLine());
+                } while (in.ready());
             }
-
         } catch (IOException e) {
             System.err.println(e);
         }
