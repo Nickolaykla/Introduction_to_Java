@@ -5,6 +5,7 @@ import static tasks.task2.Notebook.in;
 public class Main {
     public static void main(String[] args) {
         WorkWithFiles.loadFromFile();
+        Notebook notebook = new Notebook();
 
         System.out.println("Нажмите '0' для выхода");
         System.out.println("Нажмите '1' для просмотра заметок");
@@ -23,34 +24,34 @@ public class Main {
                     System.out.println("Всего хорошего!");
                     break;
                 case 1:
-                    Notebook.viewAllNotes();
+                    notebook.viewAllNotes();
                     break;
                 case 2:
-                    Notebook.addNote();
+                    notebook.addNote();
                     break;
                 case 3:
                     System.out.println("Введите Тему заметки:");
-                    Notebook.findByTopic(in.nextLine())
+                    notebook.findByTopic(in.nextLine())
                             .forEach(System.out::println);
                     break;
                 case 4:
                     System.out.println("Введите Дату, пример: 1 октября 2020:");
-                    Notebook.findByDate(in.nextLine())
+                    notebook.findByDate(in.nextLine())
                             .forEach(System.out::println);
                     break;
                 case 5:
                     System.out.println("Введите e-mail или его часть:");
-                    Notebook.findByEmail(in.nextLine())
+                    notebook.findByEmail(in.nextLine())
                             .forEach(System.out::println);
                     break;
                 case 6:
                     System.out.println("Введите слово для поиска:");
-                    Notebook.findByWordInMessage(in.nextLine())
+                    notebook.findByWordInMessage(in.nextLine())
                             .forEach(System.out::println);
                     break;
                 case 7:
                     System.out.println("Введите Тему и E-mail:");
-                    Notebook.findByTopicAndEmail(in.nextLine(), in.nextLine())
+                    notebook.findByTopicAndEmail(in.nextLine(), in.nextLine())
                             .forEach(System.out::println);
                     break;
                 default:

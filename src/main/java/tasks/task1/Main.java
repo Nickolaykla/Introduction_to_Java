@@ -11,6 +11,7 @@ public class Main {
        FileWorker.readUsersFromFile(USERS_TXT);
        FileWorker.readBooksFromFile(BOOKS_TXT);
 
-       LibraryMenu.startMenu();
+       LibraryMenu menu = new LibraryMenu();
+       menu.startMenu();
     }
 }

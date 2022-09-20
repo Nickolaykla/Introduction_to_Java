@@ -16,6 +16,7 @@ import static tasks.task1.controllers.FileWorker.*;
 
 public class Logging {
     public static final BufferedReader READER = new BufferedReader(new InputStreamReader(System.in));
+    private static final LibraryMenu menu = new LibraryMenu();
 
     public static void logIn() {
         try {
@@ -29,13 +30,13 @@ public class Logging {
             User foundUser = findUser(user);
             if (foundUser != null) {
                 if (isAdmin(foundUser)) {
-                    LibraryMenu.adminMenu();
+                   menu.adminMenu();
                 } else {
-                    LibraryMenu.userMenu();
+                   menu.userMenu();
                 }
             } else {
                 System.out.println("Неверно задан логин или пароль");
-                LibraryMenu.startMenu();
+               menu.startMenu();
             }
 
         } catch (IOException e) {
@@ -64,7 +65,7 @@ public class Logging {
             String password = READER.readLine();
             User user = new User(name, eMail, encryptPassword(password));
             FileWorker.addUserToFile(user, USERS_TXT);
-            LibraryMenu.userMenu();
+            menu.userMenu();
 
         } catch (IOException e) {
             throw new RuntimeException(e);

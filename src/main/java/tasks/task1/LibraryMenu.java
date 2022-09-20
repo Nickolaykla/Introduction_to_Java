@@ -16,7 +16,7 @@ public class LibraryMenu {
     public static List<User> users = new ArrayList<>();
     private static final User user = new User();
 
-    public static void startMenu() {
+    public void startMenu() {
         System.out.println("Для выхода нажмите '0'");
         System.out.println("Для регистрации нажмите '1'");
         System.out.println("Для входа нажмите '2'");
@@ -44,7 +44,7 @@ public class LibraryMenu {
         }
     }
 
-    public static void userMenu() {
+    public void userMenu() {
         System.out.println("Для выхода нажмите '0'");
         System.out.println("Для просмотра книг нажмите '1'");
         System.out.println("Для поиска книги нажмите '2'");
@@ -52,7 +52,7 @@ public class LibraryMenu {
         userActions();
     }
 
-    public static void adminMenu() {
+    public void adminMenu() {
         System.out.println("Для выхода нажмите '0'");
         System.out.println("Для просмотра книг нажмите '1'");
         System.out.println("Для поиска книги нажмите '2'");
@@ -61,7 +61,7 @@ public class LibraryMenu {
         adminActions();
     }
 
-    public static void userActions() {
+    public void userActions() {
         int num = -1;
         while (num != 0) {
             try {
@@ -92,7 +92,7 @@ public class LibraryMenu {
         }
     }
 
-    public static void adminActions() {
+    public void adminActions() {
         int num = -1;
         while (num != 0) {
             try {
@@ -132,7 +132,7 @@ public class LibraryMenu {
         }
     }
 
-    private static Book bookAddOffer() {
+    private Book bookAddOffer() {
         try {
             System.out.println("Введите тип книги(E_BOOK, BOOK):");
             String type = READER.readLine();

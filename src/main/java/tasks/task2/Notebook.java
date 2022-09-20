@@ -22,7 +22,7 @@ public class Notebook {
     static Scanner in = new Scanner(System.in);
 
     // Поиск по теме
-    public static List<Note> findByTopic(String topic) {
+    public List<Note> findByTopic(String topic) {
         List<Note> result = new ArrayList<>();
         if (!topic.isEmpty()) {
             Pattern pattern = Pattern.compile("\\Q" + topic + "\\E");
@@ -38,7 +38,7 @@ public class Notebook {
     }
 
     // Поиск по дате
-    public static List<Note> findByDate(String date) {
+    public List<Note> findByDate(String date) {
         List<Note> result = new ArrayList<>();
         if (!date.isEmpty()) {
             for (Note n : notes) {
@@ -55,7 +55,7 @@ public class Notebook {
     }
 
     // Поиск по e-mail, сортировка по Теме и добавление в файл
-    public static List<Note> findByEmail(String email) {
+    public List<Note> findByEmail(String email) {
         List<Note> result = new ArrayList<>();
         if (!email.isEmpty()) {
             Pattern pattern = Pattern.compile("\\Q" + email + "\\E");
@@ -71,7 +71,7 @@ public class Notebook {
     }
 
     // Поиск по слову и сортировка по Теме заметки
-    public static List<Note> findByWordInMessage(String word) {
+    public List<Note> findByWordInMessage(String word) {
         List<Note> result = new ArrayList<>();
         if (!word.isEmpty()) {
             Pattern pattern = Pattern.compile("\\Q" + word + "\\E");
@@ -88,7 +88,7 @@ public class Notebook {
     }
 
     // Поиск по теме и е-мэйлу, сортировка по теме, если темы совпадают, то по е-мэйлу
-    public static List<Note> findByTopicAndEmail(String topic, String email) {
+    public List<Note> findByTopicAndEmail(String topic, String email) {
         List<Note> result = new ArrayList<>();
         if (!topic.isEmpty() && !email.isEmpty()) {
             Pattern pattern1 = Pattern.compile("\\Q" + topic + "\\E");
@@ -106,7 +106,7 @@ public class Notebook {
     }
 
     // Добавление заметки
-    public static void addNote() {
+    public void addNote() {
             System.out.println("Enter topic name:");
             String topic = in.nextLine();
             String date = new Note().getDate();
@@ -126,7 +126,7 @@ public class Notebook {
             }
         }
 
-    public static void viewAllNotes() {
+    public void viewAllNotes() {
         notes.forEach(System.out::println);
     }
 }
