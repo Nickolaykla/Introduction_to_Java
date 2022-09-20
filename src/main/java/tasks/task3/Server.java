@@ -4,7 +4,7 @@ package tasks.task3;
 Создайте клиент-серверное приложение "Архив".
  */
 
-import tasks.task3.controller.StudentList;
+import tasks.task3.controller.StudentArchive;
 import tasks.task3.model.Faculty;
 import tasks.task3.model.Student;
 
@@ -14,7 +14,7 @@ import java.net.Socket;
 import java.util.List;
 
 public class Server {
-    static StudentList studentList = new StudentList();
+    static StudentArchive studentArchive = new StudentArchive();
     static BufferedReader in;
     static BufferedWriter out;
 
@@ -46,30 +46,30 @@ public class Server {
         String result = "";
         switch (param) {
             case "1":
-                List<Student> res1 = studentList.getAllStudents();
-                result = studentList.response(res1);
+                List<Student> res1 = studentArchive.getAllStudents();
+                result = studentArchive.response(res1);
                 break;
             case "2":
                 out.write("Введите факультет(ECONOMICS, ENGINEER, BIOLOGY, PHYSICS:" + "\n");
                 out.flush();
-                List<Student> res2 = studentList.getStudentsByFaculty(Faculty.valueOf(in.readLine()));
-                result = studentList.response(res2);
+                List<Student> res2 = studentArchive.getStudentsByFaculty(Faculty.valueOf(in.readLine()));
+                result = studentArchive.response(res2);
                 break;
             case "3":
                 out.write("Введите курс (1-5):" + "\n");
                 out.flush();
-                List<Student> res3 = studentList.getStudentsByCourse(Integer.parseInt(in.readLine()));
-                result = studentList.response(res3);
+                List<Student> res3 = studentArchive.getStudentsByCourse(Integer.parseInt(in.readLine()));
+                result = studentArchive.response(res3);
                 break;
             case "4":
                 Student newStud = studentInit();
-                StudentList.addToXml(newStud);
+                StudentArchive.addToXml(newStud);
                 break;
             case "5":
                 out.write("Введите id студента:");
                 out.flush();
                 int studId = Integer.parseInt(in.readLine());
-                Student studentToChange = studentList.getAllStudents().get(studId);
+                Student studentToChange = studentArchive.getAllStudents().get(studId);
                 out.write("Введите фамилию и имя студента:" + "\n");
                 out.flush();
                 String name = in.readLine();
@@ -82,20 +82,20 @@ public class Server {
                 out.write("Введите факультет(ECONOMICS, ENGINEER, BIOLOGY, PHYSICS):" + "\n");
                 out.flush();
                 Faculty faculty = Faculty.valueOf(in.readLine());
-                studentList.changeStudentData(studentToChange, name, course, group, faculty);
+                studentArchive.changeStudentData(studentToChange, name, course, group, faculty);
                 break;
             case "6":
                 out.write("Введите id студента для удаления дела:" + "\n");
                 out.flush();
                 int id = Integer.parseInt(in.readLine());
-                studentList.deleteStudent(id);
+                studentArchive.deleteStudent(id);
                 break;
             case "7":
                 out.write("Введите номер группы для получения дел студентов:" + "\n");
                 out.flush();
                 int groupNum = Integer.parseInt(in.readLine());
-                List<Student> res7 = studentList.getStudentsByGroup(groupNum);
-                result = studentList.response(res7);
+                List<Student> res7 = studentArchive.getStudentsByGroup(groupNum);
+                result = studentArchive.response(res7);
                 break;
             default:
                 out.write("Задан неверный запрос" + "\n");
@@ -106,8 +106,8 @@ public class Server {
     }
 
     private static Student studentInit() throws IOException {
-        int size = studentList.getAllStudents().size();
-        int id = studentList.getAllStudents().get(size - 1).getId();
+        int size = studentArchive.getAllStudents().size();
+        int id = studentArchive.getAllStudents().get(size - 1).getId();
         out.write("Введите фамилию и имя студента:" + "\n");
         out.flush();
         String name = in.readLine();

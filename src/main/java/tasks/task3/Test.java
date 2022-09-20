@@ -1,13 +1,13 @@
 package tasks.task3;
 
-import tasks.task3.controller.StudentList;
+import tasks.task3.controller.StudentArchive;
 
 
 public class Test {
 
 
     public static void main(String[] args) {
-    StudentList studentList = new StudentList();
+    StudentArchive studentList = new StudentArchive();
 
 
     }

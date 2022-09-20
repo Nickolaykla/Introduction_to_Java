@@ -10,15 +10,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @XmlRootElement(name = "students")
-public class StudentList {
+public class StudentArchive {
     private static final String PATH =
             "/home/nickolay/IdeaProjects/Introduction_to_Java/src/main/java/tasks/task3/data/students.xml";
-    private static StudentList studentList = new StudentList();
+    private static StudentArchive studentList = new StudentArchive();
 
     @XmlElement(name = "student")
     private List<Student> students = new ArrayList<>();
 
-    public StudentList() {
+    public StudentArchive() {
     }
 
     public boolean add(Student stud) {
@@ -29,11 +29,12 @@ public class StudentList {
         return getFromXml().students;
     }
 
-    public static StudentList getFromXml() {
+    //считываем данные из xml
+    public static StudentArchive getFromXml() {
         try (FileReader fr = new FileReader(PATH)) {
-            JAXBContext context = JAXBContext.newInstance(StudentList.class);
+            JAXBContext context = JAXBContext.newInstance(StudentArchive.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            return (StudentList) unmarshaller.unmarshal(fr);
+            return (StudentArchive) unmarshaller.unmarshal(fr);
         } catch (IOException | JAXBException e) {
             throw new RuntimeException(e);
         }
@@ -47,7 +48,7 @@ public class StudentList {
         } else studentList.add(student);
 
         try (FileWriter fw = new FileWriter(PATH)) {
-            JAXBContext jaxb = JAXBContext.newInstance(StudentList.class);
+            JAXBContext jaxb = JAXBContext.newInstance(StudentArchive.class);
             Marshaller marshaller = jaxb.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
