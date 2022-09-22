@@ -28,12 +28,9 @@ public class Server {
             Server serv = new Server();
 
             // Просим пользователя выбрать действие из стартового меню
-            String requestLogin = in.readLine();
-            while (!serv.loginResponse(requestLogin)) {
-                requestLogin = in.readLine();
-                serv.loginResponse(requestLogin);
-            }
+            while (!serv.loginResponse(in.readLine()));
 
+            // Обрабатываем запросы пользователя и отправляем результат
             String request = "";
             String result = "";
             while (serverSocket.isConnected()) {
@@ -56,22 +53,22 @@ public class Server {
 
     private boolean loginResponse(String param) throws IOException {
         boolean resultOfLogging = false;
-        switch (param) {
-            case "1":
-               if(UserLogging.logIn(in, out)) {
-                   resultOfLogging = true;
-               }
-                break;
-            case "2":
-               UserLogging.register(in, out);
-               resultOfLogging = true;
-                break;
-            default:
-                out.write("Неверный параметр" + "\n");
-                out.write(Client.startMenu() + "\n");
-                out.flush();
-                break;
-        }
+            switch (param) {
+                case "1":
+                    if (UserLogging.logIn(in, out)) {
+                        resultOfLogging = true;
+                    }
+                    break;
+                case "2":
+                    UserLogging.register(in, out);
+                    resultOfLogging = true;
+                    break;
+                default:
+                    out.write("Неверный параметр" + "\n");
+                    out.write(Client.startMenu() + "\n");
+                    out.flush();
+                    break;
+            }
         return resultOfLogging;
     }
 
