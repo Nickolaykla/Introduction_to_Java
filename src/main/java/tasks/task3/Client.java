@@ -12,14 +12,15 @@ public class Client {
              BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
              BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
 
-            showMenu();
+            System.out.println(startMenu());
+
 
             String request = "";
             while (clientSocket.isConnected()) {
 
                 request = reader.readLine();
 
-                if(request.equalsIgnoreCase("exit")) break;
+                if (request.equalsIgnoreCase("exit")) break;
 
                 out.write(request + "\n");
                 out.flush();
@@ -33,14 +34,28 @@ public class Client {
         }
     }
 
-    public static void showMenu() {
-        System.out.println("Выберите действие:");
-        System.out.println("Нажмите '1' для просмотра дел архива.");
-        System.out.println("Нажмите '2' для поиска студентов по факультету.");
-        System.out.println("Нажмите '3' для поиска студентов по курсу.");
-        System.out.println("Нажмите '4' для добавления нового дела в архив");
-        System.out.println("Нажмите '5' для изменения дела.");
-        System.out.println("Нажмите '6' для удаления дела.");
-        System.out.println("Нажмите '7' для поиска студентов по группе.");
+    public static String startMenu() {
+        return "Выберите действие:" + "\n" +
+                "Нажмите '1' для входа." + "\n" +
+                "Нажмите '2' для регистрации." + "\n" +
+                "Для выхода введите 'exit'" + "\n";
+    }
+
+    public static String showUserMenu() {
+        return "Выберите действие:" + "\n" +
+                "Нажмите '1' для просмотра дел архива." + "\n" +
+                "Нажмите '2' для поиска студентов по факультету." + "\n" +
+                "Нажмите '3' для поиска студентов по курсу." + "\n";
+    }
+
+    public static String showAdminMenu() {
+        return "Выберите действие:" + "\n" +
+                "Нажмите '1' для просмотра дел архива." + "\n" +
+                "Нажмите '2' для поиска студентов по факультету." + "\n" +
+                "Нажмите '3' для поиска студентов по курсу." + "\n" +
+                "Нажмите '4' для поиска студентов по группе." + "\n" +
+                "Нажмите '5' для изменения дела." + "\n" +
+                "Нажмите '6' для удаления дела." + "\n" +
+                "Нажмите '7' для добавления нового дела в архив" + "\n";
     }
 }

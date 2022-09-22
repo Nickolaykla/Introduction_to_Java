@@ -1,9 +1,7 @@
 package tasks.task3.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "student")
 @XmlType(propOrder = {"id", "name", "course", "group", "faculty"})
 public class Student {
     private int id;

@@ -3,8 +3,8 @@
     <student>
         <id>1</id>
         <name>Григорий Широв</name>
-        <course>3</course>
-        <group>10</group>
+        <course>4</course>
+        <group>11</group>
         <faculty>ENGINEER</faculty>
     </student>
     <student>
@@ -16,8 +16,8 @@
     </student>
     <student>
         <id>3</id>
-        <name>Анастасия Валерьева</name>
-        <course>1</course>
+        <name>Анастасия Валевич</name>
+        <course>2</course>
         <group>12</group>
         <faculty>ECONOMICS</faculty>
     </student>
@@ -30,9 +30,16 @@
     </student>
     <student>
         <id>5</id>
-        <name>Наталья Иванова</name>
-        <course>5</course>
-        <group>13</group>
-        <faculty>PHYSICS</faculty>
+        <name>Виталий Семенов</name>
+        <course>1</course>
+        <group>14</group>
+        <faculty>BIOLOGY</faculty>
+    </student>
+    <student>
+        <id>6</id>
+        <name>Наталья Панкратова</name>
+        <course>1</course>
+        <group>14</group>
+        <faculty>BIOLOGY</faculty>
     </student>
 </students>

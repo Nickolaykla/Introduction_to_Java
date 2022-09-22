@@ -21,8 +21,8 @@ public class StudentArchive {
     public StudentArchive() {
     }
 
-    public boolean add(Student stud) {
-        return students.add(stud);
+    public static StudentArchive getStudentList() {
+        return studentList;
     }
 
     public List<Student> getAllStudents() {
@@ -40,13 +40,7 @@ public class StudentArchive {
         }
     }
 
-    // добавляем студента в архив
-    public static void addToXml(Student student) {
-        if(!getFromXml().students.isEmpty()) {
-            studentList = getFromXml();
-            studentList.add(student);
-        } else studentList.add(student);
-
+    public static void serialize() {
         try (FileWriter fw = new FileWriter(PATH)) {
             JAXBContext jaxb = JAXBContext.newInstance(StudentArchive.class);
             Marshaller marshaller = jaxb.createMarshaller();
@@ -58,49 +52,56 @@ public class StudentArchive {
         }
     }
 
+    // для обновления студента в архиве
+    public void addToXml(int id, Student student) {
+        studentList = getFromXml();
+        studentList.students.add(id, student);
+        serialize();
+    }
+
+    // добавление студента
+    public void addToArchive(Student student) {
+        studentList = getFromXml();
+        studentList.students.add(student);
+        serialize();
+    }
+
     // получаем студентов по заданному курсу
     public List<Student> getStudentsByCourse(int course) {
-        List<Student> result;
+        List<Student> result = new ArrayList<>();
         if (course >= 1 && course <= 5) {
             result = studentList.getAllStudents().stream()
                     .filter(student -> student.getCourse() == course)
                     .collect(Collectors.toList());
-            if (result.isEmpty()) {
-                System.out.println("Таких студентов нет");
-            }
-        } else throw new IllegalArgumentException("Курс должен находиться в диапазоне от 1 до 5");
+        }
         return result;
     }
 
     public void deleteStudent(int id) {
-        studentList.getAllStudents().remove(id);
+        studentList = getFromXml();
+        studentList.students.remove(id - 1);
+        serialize();
     }
 
     //получаем студентов по заданной группе
     public List<Student> getStudentsByGroup(int group) {
-        List<Student> result;
+        List<Student> result = new ArrayList<>();
         if (group > 0) {
             result = studentList.getAllStudents().stream()
                     .filter(student -> student.getGroup() == group)
                     .collect(Collectors.toList());
-            if (result.isEmpty()) {
-                System.out.println("Таких студентов нет");
-            }
-        } else throw new IllegalArgumentException("Номер группы не может быть отрицательным");
+        }
         return result;
     }
 
     // получаем студентов по заданному факультету
     public List<Student> getStudentsByFaculty(Faculty faculty) {
-        List<Student> result;
+        List<Student> result = new ArrayList<>();
         if (faculty != null) {
             result = studentList.getAllStudents().stream()
                     .filter(student -> student.getFaculty().equals(faculty))
                     .collect(Collectors.toList());
-            if (result.isEmpty()) {
-                System.out.println("Студентов на данном факультете нет.");
-            }
-        } else throw new IllegalArgumentException("Задан неверный факультет.");
+        }
         return result;
     }
 
@@ -112,13 +113,14 @@ public class StudentArchive {
     }
 
     // изменение данных студента
-    public void changeStudentData(Student student, String name, int course, int group, Faculty faculty) {
+    public Student changeStudentData(Student student, int id, String name, int course, int group, Faculty faculty) {
         student.setName(name);
         student.setCourse(course);
         student.setGroup(group);
         student.setFaculty(faculty);
-
-        studentList.getAllStudents().add(student);
+        deleteStudent(id + 1);
+        addToXml(id, student);
+        return student;
     }
 
     @Override

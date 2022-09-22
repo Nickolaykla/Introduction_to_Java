@@ -4,5 +4,5 @@ public enum Faculty {
     ECONOMICS,
     PHYSICS,
     BIOLOGY,
-    ENGINEER
+    ENGINEER;
 }

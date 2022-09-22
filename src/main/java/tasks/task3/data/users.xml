@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users>
+    <user>
+        <name>Aleksandra</name>
+        <password>28c8edde3d61a0411511d3b1866f0636</password>
+        <role>ADMIN</role>
+    </user>
+    <user>
+        <name>Dmitry</name>
+        <password>1f32aa4c9a1d2ea010adcf2348166a04</password>
+        <role>USER</role>
+    </user>
+    <user>
+        <name>Nickolay</name>
+        <password>d9b1d7db4cd6e70935368a1efb10e377</password>
+        <role>USER</role>
+    </user>
+</users>
