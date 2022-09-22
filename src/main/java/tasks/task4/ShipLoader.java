@@ -3,16 +3,19 @@ package tasks.task4;
 import java.util.concurrent.Semaphore;
 
 public class ShipLoader implements Runnable {
-    Ship ship;
-    Semaphore sem;
+    private Ship ship;
+    private Semaphore sem;
+    private Port port;
 
-    public ShipLoader(Semaphore sem, Ship ship) {
-        if (sem != null && ship != null) {
+    public ShipLoader(Semaphore sem, Ship ship, Port port) {
+        if (sem != null && ship != null && port != null) {
             this.sem = sem;
             this.ship = ship;
+            this.port = port;
             new Thread(this).start();
         } else throw new IllegalArgumentException("Некорректные данные");
     }
+
     @Override
     public void run() {
         loadShip();
@@ -21,15 +24,29 @@ public class ShipLoader implements Runnable {
     public void loadShip() {
         try {
             int canLoad = ship.getMaxShipCapacity() - ship.getCurrentShipCapacity();
-            if (canLoad > 0 && Port.getCurrentPortCapacity() > canLoad) {
+            if (canLoad > 0 && port.getCurrentPortCapacity() > 0) {
                 sem.acquire();
                 System.out.println(ship.getName() + " корабль прибыл в порт для загрузки.");
                 Thread.sleep(2000);
-                System.out.println(ship.getName() + " загрузил " + canLoad + " контейнеров и покинул порт");
-                Port.setCurrentPortCapacity(Port.getCurrentPortCapacity() - canLoad);
-                ship.setCurrentShipCapacity(ship.getMaxShipCapacity());
-                System.out.println("Текущая загруженность порта " + Port.getCurrentPortCapacity());
+
+                // если текущее количество контейнеров в порту меньше, чем может загрузить корабль
+                // загружаем сколько можно загрузить
+                if(canLoad > port.getCurrentPortCapacity()) {
+                    int load = canLoad - port.getCurrentPortCapacity();
+                    port.setCurrentPortCapacity(0);
+                    ship.setCurrentShipCapacity(ship.getCurrentShipCapacity() + load);
+                    System.out.println(ship.getName() + " загрузил " + load + " контейнеров и покинул порт");
+                } else {
+                    // если текущее количество контейнеров превышает вместимость корабля, то загружаем корабль полностью
+                    port.setCurrentPortCapacity(port.getCurrentPortCapacity() - canLoad);
+                    ship.setCurrentShipCapacity(ship.getMaxShipCapacity());
+                    System.out.println(ship.getName() + " загрузил " + canLoad + " контейнеров и покинул порт");
+                    System.out.println("Текущая загруженность порта " + port.getCurrentPortCapacity());
+                }
                 sem.release();
+            } else {
+                System.out.println("Порт не может принять корабль, ожидайте.");
+                Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

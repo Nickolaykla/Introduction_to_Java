@@ -3,36 +3,46 @@ package tasks.task4;
 import java.util.concurrent.Semaphore;
 
 public class ShipUnloader implements Runnable {
-    Ship ship;
-    Semaphore sem;
+    private Ship ship;
+    private Semaphore sem;
+    private Port port;
 
-    public ShipUnloader(Semaphore sem, Ship ship) {
-        if (sem != null && ship != null) {
+    public ShipUnloader(Semaphore sem, Ship ship, Port port) {
+        if (sem != null && ship != null && port != null) {
             this.sem = sem;
             this.ship = ship;
+            this.port = port;
             new Thread(this).start();
         } else throw new IllegalArgumentException("Некорректные данные");
     }
+
     @Override
     public void run() {
         unloadShip();
     }
 
     public void unloadShip() {
-        int freeSpace = Port.getMaxPortCapacity() - Port.getCurrentPortCapacity();
-        if (freeSpace > ship.getCurrentShipCapacity()) {
-            try {
+        // получаем количество свободных мест в порту для разгрузки
+        int freeSpace = port.getMaxPortCapacity() - port.getCurrentPortCapacity();
+
+        // если в порту есть свободное место, то выгружаемся
+        try {
+            if (freeSpace > ship.getCurrentShipCapacity()) {
+
                 sem.acquire();
                 System.out.println(ship.getName() + " корабль прибыл в порт для разгрузки.");
                 Thread.sleep(2000);
+
                 System.out.println(ship.getName() + " корабль выгрузил " + ship.getCurrentShipCapacity() +
                         " контейнеров и покинул порт.");
-                Port.setCurrentPortCapacity(Port.getCurrentPortCapacity() + ship.getCurrentShipCapacity());
-                System.out.println("Текущая загрузка порта = " + Port.getCurrentPortCapacity());
+                port.setCurrentPortCapacity(port.getCurrentPortCapacity() + ship.getCurrentShipCapacity());
+                System.out.println("Текущая загрузка порта = " + port.getCurrentPortCapacity());
                 sem.release();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            } else {
+                System.out.println("Ожидайте освобождения места");
             }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

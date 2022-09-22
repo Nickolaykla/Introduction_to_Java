@@ -7,25 +7,67 @@ package tasks.task4;
 причала или разгружаться.
 */
 public class Port {
-    private static final int MAX_PORT_CAPACITY = 5000; // максимальное количество контейнеров в порту
-    private static final int jettyCount = 2; // количество причалов
-    private static int currentPortCapacity = 1000; // текущая загруженность порта
+    private String portName;
+    private int maxPortCapacity; // максимальное количество контейнеров в порту
+    private int jettyCount; // количество причалов
+    private int currentPortCapacity; // текущая загруженность порта
 
-    public static int getJettyCount() {
+    public Port(String portName, int maxPortCapacity, int jettyCount, int currentPortCapacity) {
+        if (portName != null && maxPortCapacity > 0 && jettyCount > 0 && currentPortCapacity >= 0) {
+            this.portName = portName;
+            this.maxPortCapacity = maxPortCapacity;
+            this.jettyCount = jettyCount;
+            this.currentPortCapacity = currentPortCapacity;
+        } else throw new IllegalArgumentException("Заданы некорректные данные.");
+    }
+
+    public String getPortName() {
+        return portName;
+    }
+
+    public void setPortName(String portName) {
+        if (portName != null) {
+            this.portName = portName;
+        }
+    }
+
+    public int getMaxPortCapacity() {
+        return maxPortCapacity;
+    }
+
+    public void setMaxPortCapacity(int maxPortCapacity) {
+        if (maxPortCapacity > 0) {
+            this.maxPortCapacity = maxPortCapacity;
+        }
+    }
+
+    public int getJettyCount() {
         return jettyCount;
     }
 
-    public static int getCurrentPortCapacity() {
+    public void setJettyCount(int jettyCount) {
+        if (jettyCount > 0) {
+            this.jettyCount = jettyCount;
+        }
+    }
+
+    public int getCurrentPortCapacity() {
         return currentPortCapacity;
     }
 
-    public static int getMaxPortCapacity() {
-        return MAX_PORT_CAPACITY;
+    public void setCurrentPortCapacity(int currentPortCapacity) {
+        if (currentPortCapacity >= 0) {
+            this.currentPortCapacity = currentPortCapacity;
+        }
     }
 
-    public static void setCurrentPortCapacity(int currentPortCapacity) {
-        if (currentPortCapacity >= 0) {
-            Port.currentPortCapacity = currentPortCapacity;
-        } else throw new IllegalArgumentException("Неверно задана текущая загруженность порта");
+    @Override
+    public String toString() {
+        return "Port{" +
+                "portName='" + portName + '\'' +
+                ", maxPortCapacity=" + maxPortCapacity +
+                ", jettyCount=" + jettyCount +
+                ", currentPortCapacity=" + currentPortCapacity +
+                '}';
     }
 }
