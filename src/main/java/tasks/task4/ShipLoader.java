@@ -23,19 +23,21 @@ public class ShipLoader implements Runnable {
 
     public void loadShip() {
         try {
+            sem.acquire();
             int canLoad = ship.getMaxShipCapacity() - ship.getCurrentShipCapacity();
             if (canLoad > 0 && port.getCurrentPortCapacity() > 0) {
-                sem.acquire();
+
                 System.out.println(ship.getName() + " корабль прибыл в порт для загрузки.");
                 Thread.sleep(2000);
 
                 // если текущее количество контейнеров в порту меньше, чем может загрузить корабль
                 // загружаем сколько можно загрузить
                 if(canLoad > port.getCurrentPortCapacity()) {
-                    int load = canLoad - port.getCurrentPortCapacity();
+                    int load =  port.getCurrentPortCapacity();
                     port.setCurrentPortCapacity(0);
                     ship.setCurrentShipCapacity(ship.getCurrentShipCapacity() + load);
                     System.out.println(ship.getName() + " загрузил " + load + " контейнеров и покинул порт");
+                    System.out.println("Текущая загруженность порта " + port.getCurrentPortCapacity());
                 } else {
                     // если текущее количество контейнеров превышает вместимость корабля, то загружаем корабль полностью
                     port.setCurrentPortCapacity(port.getCurrentPortCapacity() - canLoad);
@@ -45,8 +47,7 @@ public class ShipLoader implements Runnable {
                 }
                 sem.release();
             } else {
-                System.out.println("Порт не может принять корабль, ожидайте.");
-                Thread.sleep(1000);
+                System.out.println(ship.getName() + " ожидайте освобождения места для загрузки");
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

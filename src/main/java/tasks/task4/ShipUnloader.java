@@ -27,20 +27,20 @@ public class ShipUnloader implements Runnable {
 
         // если в порту есть свободное место, то выгружаемся
         try {
-            if (freeSpace > ship.getCurrentShipCapacity()) {
 
+            if (freeSpace > ship.getCurrentShipCapacity()) {
                 sem.acquire();
-                System.out.println(ship.getName() + " корабль прибыл в порт для разгрузки.");
+                System.out.println(ship.getName() + " прибыл в порт для разгрузки.");
                 Thread.sleep(2000);
 
-                System.out.println(ship.getName() + " корабль выгрузил " + ship.getCurrentShipCapacity() +
+
+                System.out.println(ship.getName() + " выгрузил " + ship.getCurrentShipCapacity() +
                         " контейнеров и покинул порт.");
                 port.setCurrentPortCapacity(port.getCurrentPortCapacity() + ship.getCurrentShipCapacity());
-                System.out.println("Текущая загрузка порта = " + port.getCurrentPortCapacity());
-                sem.release();
             } else {
-                System.out.println("Ожидайте освобождения места");
+                System.out.println(ship.getName() + " ожидайте некоторое время для разгрузки");
             }
+            sem.release();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
