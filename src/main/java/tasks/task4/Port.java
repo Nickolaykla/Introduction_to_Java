@@ -15,7 +15,7 @@ public class Port {
     private AtomicInteger currentPortCapacity; // текущая загруженность порта
 
     public Port(String portName, int maxPortCapacity, int jettyCount, int currentPortCapacity) {
-        if (portName != null && maxPortCapacity > 0 && jettyCount > 0 && currentPortCapacity > 0) {
+        if (portName != null && maxPortCapacity > 0 && jettyCount > 0 && currentPortCapacity >= 0) {
             this.portName = portName;
             this.maxPortCapacity = maxPortCapacity;
             this.jettyCount = jettyCount;
