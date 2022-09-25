@@ -3,8 +3,8 @@ package tasks.task4;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static tasks.task4.Point.*;
 
@@ -12,7 +12,7 @@ public class Main {
     public static List<Ship> ships = new ArrayList<>();
 
     public static void main(String[] args) {
-        Port port1 = new Port("FirstPort", 50, 2, 10);
+        Port port1 = new Port("First Port", 50, 2, 20);
         int jettyCount = port1.getJettyCount();
 
         Semaphore s = new Semaphore(jettyCount);

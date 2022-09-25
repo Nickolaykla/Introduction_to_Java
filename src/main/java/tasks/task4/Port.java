@@ -1,5 +1,7 @@
 package tasks.task4;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /*
 Порт. Корабли заходят в порт для разгрузки/загрузки контейнеров. Число контейнеров, находящихся в текущий момент в
 порту и на корабле, должно быть неотрицательным и превышающим заданную грузоподъемность судна и вместимость порта.
@@ -10,15 +12,23 @@ public class Port {
     private String portName;
     private int maxPortCapacity; // максимальное количество контейнеров в порту
     private int jettyCount; // количество причалов
-    private int currentPortCapacity; // текущая загруженность порта
+    private AtomicInteger currentPortCapacity; // текущая загруженность порта
 
     public Port(String portName, int maxPortCapacity, int jettyCount, int currentPortCapacity) {
-        if (portName != null && maxPortCapacity > 0 && jettyCount > 0 && currentPortCapacity >= 0) {
+        if (portName != null && maxPortCapacity > 0 && jettyCount > 0 && currentPortCapacity > 0) {
             this.portName = portName;
             this.maxPortCapacity = maxPortCapacity;
             this.jettyCount = jettyCount;
-            this.currentPortCapacity = currentPortCapacity;
+            this.currentPortCapacity = new AtomicInteger(currentPortCapacity);
         } else throw new IllegalArgumentException("Заданы некорректные данные.");
+    }
+
+    public int getCurrentPortCapacity() {
+        return this.currentPortCapacity.get();
+    }
+
+    public void setCurrentPortCapacity(int currentPortCapacity) {
+        this.currentPortCapacity.set(currentPortCapacity);
     }
 
     public String getPortName() {
@@ -48,16 +58,6 @@ public class Port {
     public void setJettyCount(int jettyCount) {
         if (jettyCount > 0) {
             this.jettyCount = jettyCount;
-        }
-    }
-
-    public int getCurrentPortCapacity() {
-        return currentPortCapacity;
-    }
-
-    public void setCurrentPortCapacity(int currentPortCapacity) {
-        if (currentPortCapacity >= 0) {
-            this.currentPortCapacity = currentPortCapacity;
         }
     }
 
